@@ -19,7 +19,7 @@
 			[self errorDialog:@"Audio input hardware not available"];
 		}
 		
-		NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+		NSMutableDictionary *recordSetting = [[[NSMutableDictionary alloc] init] autorelease];
 		//[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
 		[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatAppleLossless] forKey:AVFormatIDKey];
 		[recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey]; 
@@ -86,12 +86,18 @@
 	NSLog(@"play: %@", url);	
 	NSError *err;
 	AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
+    [player setDelegate:self];
 	[player setCurrentTime:offset];
 	if (!player) {
 		NSLog(@"no player: %@", [err localizedDescription]);
 		[self errorDialog:[err localizedDescription]];
 	}
 	[player play];
+}
+
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    NSLog(@"audioPlayerDidFinishPlaying --> player: %@", player);
+    [player release];
 }
 
 - (void)errorDialog:(NSString*)message {

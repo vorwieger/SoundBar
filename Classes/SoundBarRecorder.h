@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
 
-@interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate> {
+@interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate> {
 
 	AVAudioRecorder *recorder;
 	NSTimer *levelTimer;

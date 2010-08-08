@@ -32,6 +32,13 @@
 - (void)viewDidLoad {
 	NSLog(@"SoundBarViewController viewDidLoad");
     [super viewDidLoad];
+    
+    //[[AVAudioSession sharedInstance] setDelegate: self];
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: nil];
+    NSError *activationError = nil;
+	[[AVAudioSession sharedInstance] setActive: YES error: &activationError];
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
 	
 	recorder1 = [[SoundBarRecorder alloc] initWithName:@"record1"];
 	recorder2 = [[SoundBarRecorder alloc] initWithName:@"record2"];

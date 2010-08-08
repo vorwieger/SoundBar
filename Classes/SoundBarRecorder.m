@@ -11,30 +11,27 @@
 
 @implementation SoundBarRecorder
 
-- (id)initWithName:(NSString*)name {
+@synthesize recorder, name, recordPath, playPath;
+
+- (id)initWithName:(NSString*)_name {
 	if ( self = [super init] ) {
-		
-		AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-		if (!audioSession.inputIsAvailable) {
-			[self errorDialog:@"Audio input hardware not available"];
-		}
+        
+        self.name = _name;
 		
 		NSMutableDictionary *recordSetting = [[[NSMutableDictionary alloc] init] autorelease];
-		//[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
 		[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatAppleLossless] forKey:AVFormatIDKey];
 		[recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey]; 
 		[recordSetting setValue:[NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey];
 		[recordSetting setValue :[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
-//		[recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
-//		[recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
 		[recordSetting setValue :[NSNumber numberWithInt:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
-		
-		NSString *root = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-		NSString *path = [NSString stringWithFormat:@"%@/%@.caf", root, name];
-		url = [NSURL fileURLWithPath:path];
+        
+        self.recordPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf", name]];
+        NSURL *recordUrl =  [NSURL fileURLWithPath:self.recordPath];
+        
+        self.playPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf", name]];
 		
 		NSError *err = nil;
-		recorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&err];
+		self.recorder = [[ AVAudioRecorder alloc] initWithURL:recordUrl settings:recordSetting error:&err];
 		if (!recorder) {	
 			NSLog(@"recorder: %@ %d %@", [err domain], [err code], [[err userInfo] description]);
 			[self errorDialog:[err localizedDescription]];
@@ -42,66 +39,109 @@
 		
 		[recorder setDelegate:self];
 		[recorder setMeteringEnabled:YES];
-		[recorder prepareToRecord];
+        [recorder prepareToRecord];
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        offset = [prefs doubleForKey:name];
 		
-		NSLog(@"recorder initialized: %@", url);
-		
+		NSLog(@"recorder initialized: %@", recordPath);
+        
 	}
 	return self;
 }
 
 - (void)start {
-	offset = 0;
-	levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-	//NSLog(@"recorder start... recording?: %i", [recorder isRecording]);
-	//NSDate *methodStart = [NSDate date];
-	[recorder record];
-	//NSLog(@"Time elapsed: %Gms", -[methodStart timeIntervalSinceNow]*1000);
+    start = YES;
+    offset = 0;
+    [recorder record];
+    [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+    NSLog(@"recording started.");
 }
 
 - (void)stop {
-	[levelTimer invalidate];
-	NSLog(@"recorder stop...");
-	//NSDate *methodStart = [NSDate date];
-	[recorder stop];
-	//NSLog(@"Time elapsed: %Gms", -[methodStart timeIntervalSinceNow]*1000);
-	//NSLog(@"recorder stopped.");
+    start = NO;
+    if (offset == 0) {
+        [self infoDialog:NSLocalizedString(@"NoRecording", nil)];
+    }
+    [recorder stop];
+    NSLog(@"recording stopped.");
 }
 
 - (void)levelTimerCallback:(NSTimer *)timer {
-	[recorder updateMeters];
-	NSLog(@"Average input: %f Peak input: %f", [recorder averagePowerForChannel:0], [recorder peakPowerForChannel:0]);
-	if (offset == 0 && [recorder peakPowerForChannel:0] > -20 ) {
-		offset = [recorder currentTime];
-		NSLog(@"recording with offset of %Gs", offset);
-	}
+    if (start) {
+       [recorder updateMeters];
+        //NSLog(@"recording level: %f", [recorder peakPowerForChannel:0]);
+        if (offset == 0 && [recorder peakPowerForChannel:0] > -20 ) {
+            offset = [recorder currentTime];
+            NSLog(@"recording with offset of %Gs", offset);
+        }
+    } else {
+        [timer invalidate];
+        NSLog(@"finish.");
+    }
 }
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag {
-	NSLog (@"audioRecorderDidFinishRecording:successfully: %i %@",flag, url);
-	// your actions here
+	NSLog (@"audioRecorderDidFinishRecording:successfully: %i %@",flag, recordPath);
+    
+    NSError *err = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm removeItemAtPath:playPath error:NULL];
+    [fm copyItemAtPath:self.recordPath toPath:self.playPath error:&err];
+    if (err) {	
+        [self errorDialog:[err localizedDescription]];
+    }
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setDouble:offset forKey:name];
+    [prefs synchronize];
+    
+   	//[recorder prepareToRecord];
+
 }
 
 - (void)play {
-	NSLog(@"play: %@", url);	
-	NSError *err;
-	AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
-    [player setDelegate:self];
-	[player setCurrentTime:offset];
-	if (!player) {
-		NSLog(@"no player: %@", [err localizedDescription]);
-		[self errorDialog:[err localizedDescription]];
-	}
-	[player play];
+    if (offset == 0) {
+        [self infoDialog:NSLocalizedString(@"NoSound", nil)];
+    } 
+    NSError *err;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.playPath] error:&err];
+    if (!player) {
+        NSLog(@"no player: %@", [err localizedDescription]);
+        [self errorDialog:[err localizedDescription]];
+    } else {
+        [player setDelegate:self];
+        [player setCurrentTime:MAX(0, offset - 0.05)];
+        [player setVolume: 1.0];
+        if ([player duration] > 0) {
+            [player play];
+            NSLog(@"player playing: %@, offset: %F, duration: %F", player, offset, player.duration); 
+        } else {
+            [player release];
+        }
+    }
 }
 
-- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    NSLog(@"audioPlayerDidFinishPlaying --> player: %@", player);
-    [player release];
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if ([player retainCount] != 1) {
+        [player release];
+    }
+    NSLog(@"player finish: %@", player);
 }
 
-- (void)errorDialog:(NSString*)message {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Warning"
+- (void)errorDialog:(NSString *)message {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"ErrorLabel", nil)
+													message: message
+												   delegate: nil
+										  cancelButtonTitle: @"OK"
+										  otherButtonTitles: nil];
+	[alert show];
+	[alert release]; 
+	return;
+}
+
+- (void)infoDialog:(NSString *)message {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"InfoLabel", nil)
 													message: message
 												   delegate: nil
 										  cancelButtonTitle: @"OK"

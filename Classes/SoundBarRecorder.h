@@ -12,21 +12,27 @@
 
 @interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate> {
 
+    BOOL start;
 	AVAudioRecorder *recorder;
-	NSTimer *levelTimer;
 	NSTimeInterval offset;
-	//AVAudioPlayer *player;
-	NSURL *url;
-	
+	NSString *recordPath;
+    NSString *playPath;
+    NSString *name;
 }
 
-- (id)initWithName:(NSString*)name;
+@property (nonatomic, retain)	AVAudioRecorder *recorder;
+@property (nonatomic, retain)	NSString *name;
+@property (nonatomic, retain)	NSString *recordPath;
+@property (nonatomic, retain)	NSString *playPath;
+
+- (id)initWithName:(NSString *)name;
 - (void)start;
 - (void)stop;
 - (void)play;
 
 - (void)levelTimerCallback:(NSTimer *)timer;
-- (void)errorDialog:(NSString*)message;
 
+- (void)errorDialog:(NSString *)message;
+- (void)infoDialog:(NSString *)message;
 
 @end

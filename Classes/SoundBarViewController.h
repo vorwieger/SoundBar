@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "SoundBarRecorder.h"
 

@@ -16,12 +16,15 @@
 
 @interface SoundBarViewController : UIViewController {
 	
+    UILabel *versionLabel;
 	SoundBarRecorder *recorder1;
 	SoundBarRecorder *recorder2;
 	SoundBarRecorder *recorder3;
 	SoundBarRecorder *recorder4;
 	
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *versionLabel;
 
 - (IBAction)play1:(id)sender;
 - (IBAction)play2:(id)sender;

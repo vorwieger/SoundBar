@@ -1,5 +1,8 @@
 
+"Version" = "Version %@";
+
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";
+
 "NoSound" = "No Sound recorded.\nTo record a sound hold the red button.";
 "NoRecording" =  "To record a sound hold the red button!";

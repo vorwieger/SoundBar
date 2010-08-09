@@ -10,7 +10,7 @@
 
 @implementation SoundBarViewController
 
-
+@synthesize versionLabel;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -30,9 +30,13 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"SoundBarViewController viewDidLoad");
-    [super viewDidLoad];
+	
+    // update the version label with version number from Info.plist
+	NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+	NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/Info.plist", bundlePath]];
+	self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version", nil), [infoDictionary objectForKey:@"CFBundleVersion"]];
     
+	// prepare AudioSession 
     //[[AVAudioSession sharedInstance] setDelegate: self];
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: nil];
     NSError *activationError = nil;
@@ -40,10 +44,13 @@
     UInt32 doChangeDefaultRoute = 1;
     AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
 	
+	// initialize recorders
 	recorder1 = [[SoundBarRecorder alloc] initWithName:@"record1"];
 	recorder2 = [[SoundBarRecorder alloc] initWithName:@"record2"];
 	recorder3 = [[SoundBarRecorder alloc] initWithName:@"record3"];
 	recorder4 = [[SoundBarRecorder alloc] initWithName:@"record4"];
+    
+    [super viewDidLoad];
 }
 
 

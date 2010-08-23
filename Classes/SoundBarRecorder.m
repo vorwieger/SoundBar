@@ -53,6 +53,7 @@
 - (void)start {
     start = YES;
     offset = 0;
+	count = 0;
     [recorder record];
     [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
     NSLog(@"recording started.");
@@ -61,15 +62,20 @@
 - (void)stop {
     start = NO;
     if (offset == 0) {
-        [self infoDialog:NSLocalizedString(@"NoRecording", nil)];
+		if (count < 50) {
+			[self infoDialog:NSLocalizedString(@"NoRecording", nil)];
+		} else {
+			[self infoDialog:NSLocalizedString(@"TooLow", nil)];
+		}
     }
     [recorder stop];
-    NSLog(@"recording stopped.");
+    NSLog(@"recording stopped. %d", count);
 }
 
 - (void)levelTimerCallback:(NSTimer *)timer {
     if (start) {
-       [recorder updateMeters];
+		count++;
+		[recorder updateMeters];
         //NSLog(@"recording level: %f", [recorder peakPowerForChannel:0]);
         if (offset == 0 && [recorder peakPowerForChannel:0] > -20 ) {
             offset = [recorder currentTime];
@@ -82,7 +88,7 @@
 }
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag {
-	NSLog (@"audioRecorderDidFinishRecording:successfully: %i %@",flag, recordPath);
+	NSLog (@"audioRecorderDidFinishRecording:successfully: %@", recordPath);
     
     NSError *err = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -103,23 +109,24 @@
 - (void)play {
     if (offset == 0) {
         [self infoDialog:NSLocalizedString(@"NoSound", nil)];
-    } 
-    NSError *err;
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.playPath] error:&err];
-    if (!player) {
-        NSLog(@"no player: %@", [err localizedDescription]);
-        [self errorDialog:[err localizedDescription]];
     } else {
-        [player setDelegate:self];
-        [player setCurrentTime:MAX(0, offset - 0.05)];
-        [player setVolume: 1.0];
-        if ([player duration] > 0) {
-            [player play];
-            NSLog(@"player playing: %@, offset: %F, duration: %F", player, offset, player.duration); 
-        } else {
-            [player release];
-        }
-    }
+		NSError *err;
+		AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.playPath] error:&err];
+		if (!player) {
+			NSLog(@"no player: %@", [err localizedDescription]);
+			[self errorDialog:[err localizedDescription]];
+		} else {
+			[player setDelegate:self];
+			[player setCurrentTime:MAX(0, offset - 0.05)];
+			[player setVolume: 1.0];
+			if ([player duration] > 0) {
+				[player play];
+				NSLog(@"player playing: %@, offset: %F, duration: %F", player, offset, player.duration); 
+			} else {
+				[player release];
+			}
+		}
+	}
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {

@@ -13,6 +13,7 @@
 @interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate> {
 
     BOOL start;
+	double count;
 	AVAudioRecorder *recorder;
 	NSTimeInterval offset;
 	NSString *recordPath;

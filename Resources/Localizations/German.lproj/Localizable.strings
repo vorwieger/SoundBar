@@ -6,3 +6,4 @@
 
 "NoSound" = "Es ist noch kein Ton gespeichert.\nZur Aufnahme von Sprache, Tönen oder Geräusche den roten Aufnahmeknopf gedrückt halten!";
 "NoRecording" =  "Zur Aufnahme von Sprache, Tönen oder Geräusche den roten Aufnahmeknopf gedrückt halten!";
+"TooLow" =  "Die Aufnahme war zu leise!";

@@ -45,7 +45,6 @@
         offset = [prefs doubleForKey:name];
 		
 		NSLog(@"recorder initialized: %@", recordPath);
-        
 	}
 	return self;
 }
@@ -55,7 +54,7 @@
     offset = 0;
 	count = 0;
     [recorder record];
-    [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(levelTimerCallback:) userInfo:nil repeats:YES];
     NSLog(@"recording started.");
 }
 
@@ -103,7 +102,6 @@
     [prefs synchronize];
     
    	//[recorder prepareToRecord];
-
 }
 
 - (void)play {

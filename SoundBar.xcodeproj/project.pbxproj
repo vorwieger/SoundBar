@@ -20,10 +20,10 @@
 		D092ADF8121C7AE300EC2215 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D092ADF7121C7AE300EC2215 /* Icon.png */; };
 		D0A236D61210B8420036CAAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D045AA47120F5A40005AB28C /* Localizable.strings */; };
 		D0A237121210C80D0036CAAF /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A237101210C80D0036CAAF /* Icon-Small.png */; };
+		D0A4E0C712284D5000473B8C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A4E0C612284D5000473B8C /* Default.png */; };
 		D0DA9F19120F5A92005C0732 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F17120F5A92005C0732 /* MainWindow.xib */; };
 		D0DA9F1A120F5A92005C0732 /* SoundBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F18120F5A92005C0732 /* SoundBarViewController.xib */; };
 		D0DA9F21120F5A9C005C0732 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F1B120F5A9C005C0732 /* background.png */; };
-		D0DA9F22120F5A9C005C0732 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F1C120F5A9C005C0732 /* Default.png */; };
 		D0DA9F23120F5A9C005C0732 /* play_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F1D120F5A9C005C0732 /* play_pressed.png */; };
 		D0DA9F24120F5A9C005C0732 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F1E120F5A9C005C0732 /* play.png */; };
 		D0DA9F25120F5A9C005C0732 /* rec_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F1F120F5A9C005C0732 /* rec_pressed.png */; };
@@ -51,10 +51,10 @@
 		D08C09F011F65D71007E933B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		D092ADF7121C7AE300EC2215 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Images/Icon.png; sourceTree = "<group>"; };
 		D0A237101210C80D0036CAAF /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Images/Icon-Small.png"; sourceTree = "<group>"; };
+		D0A4E0C612284D5000473B8C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Images/Default.png; sourceTree = "<group>"; };
 		D0DA9F17120F5A92005C0732 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = Resources/NIB/MainWindow.xib; sourceTree = "<group>"; };
 		D0DA9F18120F5A92005C0732 /* SoundBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SoundBarViewController.xib; path = Resources/NIB/SoundBarViewController.xib; sourceTree = "<group>"; };
 		D0DA9F1B120F5A9C005C0732 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/Images/background.png; sourceTree = "<group>"; };
-		D0DA9F1C120F5A9C005C0732 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Images/Default.png; sourceTree = "<group>"; };
 		D0DA9F1D120F5A9C005C0732 /* play_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_pressed.png; path = Resources/Images/play_pressed.png; sourceTree = "<group>"; };
 		D0DA9F1E120F5A9C005C0732 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Resources/Images/play.png; sourceTree = "<group>"; };
 		D0DA9F1F120F5A9C005C0732 /* rec_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rec_pressed.png; path = Resources/Images/rec_pressed.png; sourceTree = "<group>"; };
@@ -104,7 +104,6 @@
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -116,6 +115,7 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* SoundBar_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -164,9 +164,9 @@
 		D088E351120F4EE500977465 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0A4E0C612284D5000473B8C /* Default.png */,
 				D092ADF7121C7AE300EC2215 /* Icon.png */,
 				D0A237101210C80D0036CAAF /* Icon-Small.png */,
-				D0DA9F1C120F5A9C005C0732 /* Default.png */,
 				D0DA9F1B120F5A9C005C0732 /* background.png */,
 				D0DA9F1D120F5A9C005C0732 /* play_pressed.png */,
 				D0DA9F1E120F5A9C005C0732 /* play.png */,
@@ -228,7 +228,6 @@
 				D0DA9F19120F5A92005C0732 /* MainWindow.xib in Resources */,
 				D0DA9F1A120F5A92005C0732 /* SoundBarViewController.xib in Resources */,
 				D0DA9F21120F5A9C005C0732 /* background.png in Resources */,
-				D0DA9F22120F5A9C005C0732 /* Default.png in Resources */,
 				D0DA9F23120F5A9C005C0732 /* play_pressed.png in Resources */,
 				D0DA9F24120F5A9C005C0732 /* play.png in Resources */,
 				D0DA9F25120F5A9C005C0732 /* rec_pressed.png in Resources */,
@@ -236,6 +235,7 @@
 				D0A236D61210B8420036CAAF /* Localizable.strings in Resources */,
 				D0A237121210C80D0036CAAF /* Icon-Small.png in Resources */,
 				D092ADF8121C7AE300EC2215 /* Icon.png in Resources */,
+				D0A4E0C712284D5000473B8C /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

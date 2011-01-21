@@ -30,16 +30,16 @@
 	};
 	28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1006, 3029}}";
-			sepNavSelRange = "{4959, 0}";
-			sepNavVisRange = "{1597, 852}";
+			sepNavIntBoundsRect = "{{0, 0}, {1790, 2964}}";
+			sepNavSelRange = "{5743, 0}";
+			sepNavVisRange = "{4903, 1737}";
 			sepNavWindowFrame = "{{85, 77}, {1048, 696}}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = D08C09B811F65A3D007E933B /* SoundBar */;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* SoundBar */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* SoundBar */,
@@ -95,10 +95,11 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 317326560;
-			PBXWorkspaceStateSaveDate = 317326560;
+			PBXPerProjectTemplateStateSaveDate = 317334386;
+			PBXWorkspaceStateSaveDate = 317334386;
 		};
 		perUserProjectItems = {
+			D012935912EA238D009347EE /* PBXTextBookmark */ = D012935912EA238D009347EE /* PBXTextBookmark */;
 			D0AC662812EA08B200945787 /* PBXTextBookmark */ = D0AC662812EA08B200945787 /* PBXTextBookmark */;
 			D0AC666212EA1A5500945787 /* PBXTextBookmark */ = D0AC666212EA1A5500945787 /* PBXTextBookmark */;
 			D0AC666412EA1A5500945787 /* PBXTextBookmark */ = D0AC666412EA1A5500945787 /* PBXTextBookmark */;
@@ -106,8 +107,7 @@
 			D0AC666612EA1A5500945787 /* PBXTextBookmark */ = D0AC666612EA1A5500945787 /* PBXTextBookmark */;
 			D0AC666712EA1A5500945787 /* PBXTextBookmark */ = D0AC666712EA1A5500945787 /* PBXTextBookmark */;
 			D0AC667C12EA1B6C00945787 /* PBXTextBookmark */ = D0AC667C12EA1B6C00945787 /* PBXTextBookmark */;
-			D0AC667D12EA1B6C00945787 /* PBXTextBookmark */ = D0AC667D12EA1B6C00945787 /* PBXTextBookmark */;
-			D0AC667F12EA1B7500945787 /* PBXTextBookmark */ = D0AC667F12EA1B7500945787 /* PBXTextBookmark */;
+			D0C1BCEF12EA227E00640C96 /* PBXTextBookmark */ = D0C1BCEF12EA227E00640C96 /* PBXTextBookmark */;
 		};
 		sourceControlManager = D08C09C811F65A51007E933B /* Source Control */;
 		userBuildSettings = {
@@ -135,6 +135,16 @@
 			sepNavVisRect = "{{0, 54}, {904, 618}}";
 			sepNavWindowFrame = "{{77, 77}, {1048, 696}}";
 		};
+	};
+	D012935912EA238D009347EE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */;
+		name = "SoundBarViewController.m: 132";
+		rLen = 0;
+		rLoc = 5743;
+		rType = 0;
+		vrLen = 1737;
+		vrLoc = 4903;
 	};
 	D045AA48120F5A40005AB28C /* English */ = {
 		uiCtxt = {
@@ -299,26 +309,6 @@
 		vrLen = 586;
 		vrLoc = 0;
 	};
-	D0AC667D12EA1B6C00945787 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */;
-		name = "SoundBarViewController.m: 132";
-		rLen = 0;
-		rLoc = 5743;
-		rType = 0;
-		vrLen = 1729;
-		vrLoc = 4903;
-	};
-	D0AC667F12EA1B7500945787 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */;
-		name = "SoundBarViewController.m: 132";
-		rLen = 0;
-		rLoc = 5743;
-		rType = 0;
-		vrLen = 1737;
-		vrLoc = 4903;
-	};
 	D0AF0BB612DF962F0093E29D /* SoundBarRecorder.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {854, 642}}";
@@ -332,6 +322,16 @@
 			sepNavSelRange = "{1647, 0}";
 			sepNavVisRange = "{2189, 1481}";
 		};
+	};
+	D0C1BCEF12EA227E00640C96 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */;
+		name = "SoundBarViewController.m: 132";
+		rLen = 0;
+		rLoc = 5743;
+		rType = 0;
+		vrLen = 1737;
+		vrLoc = 4903;
 	};
 	D0DA9F17120F5A92005C0732 /* MainWindow.xib */ = {
 		uiCtxt = {

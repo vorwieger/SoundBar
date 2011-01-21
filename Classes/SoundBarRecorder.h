@@ -10,30 +10,25 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
 
-@interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate> {
+@class SoundBarRecorder;
 
-    BOOL start;
-	double count;
-	AVAudioRecorder *recorder;
-	NSTimeInterval offset;
-	NSString *recordPath;
-    NSString *playPath;
-    NSString *name;
+@protocol SoundBarRecorderDelegate
+- (void)didFinishRecording:(SoundBarRecorder *)soundBarRecorder;
+@end
+
+@interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate> {
 }
 
-@property (nonatomic, retain)	AVAudioRecorder *recorder;
-@property (nonatomic, retain)	NSString *name;
-@property (nonatomic, retain)	NSString *recordPath;
-@property (nonatomic, retain)	NSString *playPath;
+@property (assign) id <SoundBarRecorderDelegate> delegate;
+@property (readonly, retain) NSString *name;
+@property (readonly, retain) NSURL *recordUrl;
+@property (readonly) double size;
+@property (readonly) NSTimeInterval offset;
+@property (readonly) float peak;
 
-- (id)initWithName:(NSString *)name;
-- (void)start;
-- (void)stop;
-- (void)play;
-
-- (void)levelTimerCallback:(NSTimer *)timer;
-
-- (void)errorDialog:(NSString *)message;
-- (void)infoDialog:(NSString *)message;
+- (id)initWithName:(NSString *)theName;
+- (void)startRecording;
+- (void)stopRecording;
 
 @end
+

@@ -1,9 +1,20 @@
 
 "Version" = "Version %@";
 
+"ImportTitle" = "Import of sound";
+"ImportSound1Button" = "Position 1";
+"ImportSound2Button" = "Position 2";
+"ImportSound3Button" = "Position 3";
+"ImportSound4Button" = "Position 4";
+
+"CancelButton" = "Cancel";
+"OKButton" = "OK";
+"SendByMailButton" = "Email Sound";
+
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";
 
 "NoSound" = "No Sound recorded.\nTo record a sound hold the red button.";
 "NoRecording" =  "To record a sound hold the red button!";
 "TooLow" =  "The recording was too quiet!";
+"NoMail" = "Email not available! Please configure Mail Account.";

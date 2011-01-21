@@ -11,36 +11,30 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <MessageUI/MessageUI.h>
 
 #import "SoundBarRecorder.h"
+#import "SoundBarPlayer.h"
 
-@interface SoundBarViewController : UIViewController {
-	
-    UILabel *versionLabel;
-	SoundBarRecorder *recorder1;
-	SoundBarRecorder *recorder2;
-	SoundBarRecorder *recorder3;
-	SoundBarRecorder *recorder4;
-	
+@interface SoundBarViewController : UIViewController <SoundBarRecorderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
+	IBOutlet UIButton *playButton1;
+	IBOutlet UIButton *playButton2;
+	IBOutlet UIButton *playButton3;
+	IBOutlet UIButton *playButton4;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *versionLabel;
+@property (readonly, retain) IBOutlet UILabel *versionLabel;
 
-- (IBAction)play1:(id)sender;
-- (IBAction)play2:(id)sender;
-- (IBAction)play3:(id)sender;
-- (IBAction)play4:(id)sender;
+- (void)setSoundFromURL:(NSURL *)aURL;
+- (void)sendSoundAsMail;
 
-- (IBAction)startRecording1:(id)sender;
-- (IBAction)startRecording2:(id)sender;
-- (IBAction)startRecording3:(id)sender;
-- (IBAction)startRecording4:(id)sender;
+- (IBAction)play:(id)sender;
+- (IBAction)startRecording:(id)sender;
+- (IBAction)stopRecording:(id)sender;
 
-- (IBAction)stopRecording1:(id)sender;
-- (IBAction)stopRecording2:(id)sender;
-- (IBAction)stopRecording3:(id)sender;
-- (IBAction)stopRecording4:(id)sender;
-
+- (void)errorDialog:(NSString *)message;
+- (void)infoDialog:(NSString *)message;
 
 @end
+
 

@@ -34,6 +34,7 @@
     NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/Info.plist", bundlePath]];
 
     self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version", nil), [infoDictionary objectForKey:@"CFBundleVersion"]];
+	//self.versionLabel.text = @"loading...";
 
     // prepare AudioSession
     // [[AVAudioSession sharedInstance] setDelegate: self];

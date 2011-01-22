@@ -21,8 +21,15 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icons/Icon-72.png</string>
+		<string>Icons/Icon@2x.png</string>
+		<string>Icons/Icon-72.png</string>
+		<string>Icons/Icon-Small.png</string>
+		<string>Icons/Icon-Small-50.png</string>
+		<string>Icons/Icon-Small@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>de.peter-vorwieger.soundbar</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -269,9 +269,6 @@
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>D088E34E120F4EA900977465</string>
-								<string>D045AA47120F5A40005AB28C</string>
-								<string>D088E34F120F4EB800977465</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -280,11 +277,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>19</integer>
+									<integer>13</integer>
+									<integer>10</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {278, 664}}</string>
+							<string>{{0, 0}, {278, 551}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -296,14 +296,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {295, 682}}</string>
+						<string>{{0, 0}, {295, 569}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>278</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>65 55 1215 723 0 0 1280 778 </string>
+						<string>79 153 1147 610 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -319,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SoundBarViewController.m</string>
+								<string>Default@2x.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,21 +327,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SoundBarViewController.m</string>
+										<string>Default@2x.png</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D012935912EA238D009347EE</string>
+										<string>D0B4FE5012EB7A4B00D55F6B</string>
 										<key>history</key>
 										<array>
-											<string>D0AC662812EA08B200945787</string>
-											<string>D0AC666212EA1A5500945787</string>
-											<string>D0AC666412EA1A5500945787</string>
-											<string>D0AC666512EA1A5500945787</string>
-											<string>D0AC666612EA1A5500945787</string>
-											<string>D0AC666712EA1A5500945787</string>
-											<string>D0AC667C12EA1B6C00945787</string>
-											<string>D0C1BCEF12EA227E00640C96</string>
+											<string>D09C55E412EB4B37008008D2</string>
+											<string>D09C55E512EB4B37008008D2</string>
+											<string>D09C55FD12EB7569008008D2</string>
+											<string>D09C55FE12EB7569008008D2</string>
+											<string>D09C55FF12EB7569008008D2</string>
+											<string>D09C560012EB7569008008D2</string>
+											<string>D09C560312EB7569008008D2</string>
+											<string>D09C560412EB7569008008D2</string>
+											<string>D0B4FE4E12EB7A4B00D55F6B</string>
+											<string>D0B4FE4F12EB7A4B00D55F6B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -353,14 +355,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {915, 677}}</string>
+								<string>{{0, 0}, {847, 564}}</string>
 								<key>RubberWindowFrame</key>
-								<string>65 55 1215 723 0 0 1280 778 </string>
+								<string>79 153 1147 610 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>677pt</string>
+							<string>564pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -373,9 +375,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 682}, {915, 0}}</string>
+								<string>{{0, 569}, {847, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>65 55 1215 723 0 0 1280 778 </string>
+								<string>79 153 1147 610 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -384,7 +386,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>915pt</string>
+					<string>847pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -399,9 +401,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D012935012EA238D009347EE</string>
+				<string>D0B4FE4712EB78A600D55F6B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D012935112EA238D009347EE</string>
+				<string>D0B4FE4812EB78A600D55F6B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -539,12 +541,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D08C09C611F65A51007E933B</string>
 		<string>/Users/peter/Documents/SoundBar/SoundBar.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>65 55 1215 723 0 0 1280 778 </string>
+	<string>79 153 1147 610 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -621,7 +624,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D08C09C611F65A51007E933B</string>
-				<string>D012935212EA238D009347EE</string>
+				<string>D0B4FE4912EB78A600D55F6B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -743,13 +746,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>D012935312EA238D009347EE</string>
+				<string>D0B4FE5112EB7A4B00D55F6B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>D012935412EA238D009347EE</string>
-				<string>D012935512EA238D009347EE</string>
-				<string>D012935612EA238D009347EE</string>
-				<string>D012935712EA238D009347EE</string>
-				<string>D012935812EA238D009347EE</string>
+				<string>D0B4FE5212EB7A4B00D55F6B</string>
+				<string>D0B4FE5312EB7A4B00D55F6B</string>
+				<string>D0B4FE5412EB7A4B00D55F6B</string>
+				<string>D0B4FE5512EB7A4B00D55F6B</string>
+				<string>D0B4FE5612EB7A4B00D55F6B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -903,7 +906,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>D0B1F8C312EA1E4600C48986</string>
+				<string>D0B4FE5712EB7A4B00D55F6B</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

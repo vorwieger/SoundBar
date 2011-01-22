@@ -14,7 +14,7 @@
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";
 
-"NoSound" = "No Sound recorded.\nTo record a sound hold the red button.";
-"NoRecording" =  "To record a sound hold the red button!";
+"NoSound" = "No Sound recorded.\nTo record a sound press and hold the red button.";
+"NoRecording" =  "To record a sound press and hold the red button!";
 "TooLow" =  "The recording was too quiet!";
-"NoMail" = "Email not available! Please configure Mail Account.";
+"NoMail" = "Email is not available! Please configure Your Mail Account.";

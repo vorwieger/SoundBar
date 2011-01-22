@@ -17,4 +17,4 @@
 "NoSound" = "Es ist noch kein Ton gespeichert.\nZur Aufnahme von Sprache, Tönen oder Geräusche den roten Aufnahmeknopf gedrückt halten!";
 "NoRecording" = "Zur Aufnahme von Sprache, Tönen oder Geräusche den roten Aufnahmeknopf gedrückt halten!";
 "TooLow" = "Die Aufnahme war zu leise!";
-"NoMail" = "E-Mail Versand ist nicht möglich. Eventuell ist der Mail Account nicht richtig konfiguriert.";
+"NoMail" = "Der E-Mail Versand ist nicht möglich. Eventuell ist der Mail Account nicht richtig konfiguriert.";

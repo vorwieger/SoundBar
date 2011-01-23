@@ -34,9 +34,9 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    if (url != nil && [url isFileURL]) {
-        NSLog(@"URL:%@", url);
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+	if (url != nil && [url isFileURL]) {
+        NSLog(@"URL:%@, sourceApplication:%@, annotation:%@", url, sourceApplication, annotation);
         [viewController setSoundFromURL:url];
     }
     return YES;

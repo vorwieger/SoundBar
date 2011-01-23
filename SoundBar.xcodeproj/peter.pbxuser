@@ -2,17 +2,17 @@
 {
 	1D3623240D0F684500981E51 /* SoundBarAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {558, 522}}";
-			sepNavSelRange = "{491, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {812, 599}}";
+			sepNavSelRange = "{252, 21}";
 			sepNavVisRange = "{0, 491}";
 			sepNavWindowFrame = "{{98, 56}, {1048, 696}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1979, 1248}}";
-			sepNavSelRange = "{3194, 0}";
-			sepNavVisRange = "{1727, 1466}";
+			sepNavIntBoundsRect = "{{0, 0}, {1979, 1118}}";
+			sepNavSelRange = "{910, 0}";
+			sepNavVisRange = "{322, 2192}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* SoundBar */ = {
@@ -23,7 +23,7 @@
 	};
 	28D7ACF60DDB3853001CB0EB /* SoundBarViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {999, 533}}";
+			sepNavIntBoundsRect = "{{0, 0}, {999, 599}}";
 			sepNavSelRange = "{922, 0}";
 			sepNavVisRange = "{0, 1016}";
 		};
@@ -32,7 +32,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1790, 2691}}";
 			sepNavSelRange = "{4343, 0}";
-			sepNavVisRange = "{3372, 1588}";
+			sepNavVisRange = "{3272, 1812}";
 			sepNavWindowFrame = "{{85, 77}, {1048, 696}}";
 		};
 	};
@@ -56,7 +56,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					608,
+					634,
 					20,
 					48,
 					43,
@@ -105,6 +105,13 @@
 			D077632912EC4A0A002839D0 /* PBXTextBookmark */ = D077632912EC4A0A002839D0 /* PBXTextBookmark */;
 			D077632A12EC4A0A002839D0 /* PBXTextBookmark */ = D077632A12EC4A0A002839D0 /* PBXTextBookmark */;
 			D077632B12EC4A0A002839D0 /* PBXTextBookmark */ = D077632B12EC4A0A002839D0 /* PBXTextBookmark */;
+			D077634A12EC4BA7002839D0 /* PBXTextBookmark */ = D077634A12EC4BA7002839D0 /* PBXTextBookmark */;
+			D077634B12EC4BA7002839D0 /* PBXTextBookmark */ = D077634B12EC4BA7002839D0 /* PBXTextBookmark */;
+			D077634C12EC4BA7002839D0 /* PBXTextBookmark */ = D077634C12EC4BA7002839D0 /* PBXTextBookmark */;
+			D077634D12EC4BA7002839D0 /* PBXTextBookmark */ = D077634D12EC4BA7002839D0 /* PBXTextBookmark */;
+			D077634E12EC50A0002839D0 /* PBXTextBookmark */ = D077634E12EC50A0002839D0 /* PBXTextBookmark */;
+			D077635112EC5162002839D0 /* PBXTextBookmark */ = D077635112EC5162002839D0 /* PBXTextBookmark */;
+			D077635712EC54F0002839D0 /* PBXTextBookmark */ = D077635712EC54F0002839D0 /* PBXTextBookmark */;
 			D09C55E412EB4B37008008D2 = D09C55E412EB4B37008008D2 /* PBXBookmark */;
 			D09C55E512EB4B37008008D2 = D09C55E512EB4B37008008D2 /* PBXBookmark */;
 			D09C55FD12EB7569008008D2 = D09C55FD12EB7569008008D2 /* PBXBookmark */;
@@ -180,7 +187,7 @@
 		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
 		name = "SoundBarAppDelegate.m: 96";
 		rLen = 0;
-		rLoc = 3194;
+		rLoc = 3327;
 		rType = 0;
 		vrLen = 1466;
 		vrLoc = 1727;
@@ -215,6 +222,76 @@
 		vrLen = 1016;
 		vrLoc = 0;
 	};
+	D077634A12EC4BA7002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* SoundBarViewController.h */;
+		name = "SoundBarViewController.h: 33";
+		rLen = 0;
+		rLoc = 922;
+		rType = 0;
+		vrLen = 1016;
+		vrLoc = 0;
+	};
+	D077634B12EC4BA7002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* SoundBarAppDelegate.h */;
+		name = "SoundBarAppDelegate.h: 13";
+		rLen = 21;
+		rLoc = 252;
+		rType = 0;
+		vrLen = 491;
+		vrLoc = 0;
+	};
+	D077634C12EC4BA7002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
+		name = "SoundBarAppDelegate.m: 52";
+		rLen = 0;
+		rLoc = 1264;
+		rType = 0;
+		vrLen = 1731;
+		vrLoc = 220;
+	};
+	D077634D12EC4BA7002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
+		name = "SoundBarAppDelegate.m: 48";
+		rLen = 0;
+		rLoc = 1154;
+		rType = 0;
+		vrLen = 1800;
+		vrLoc = 220;
+	};
+	D077634E12EC50A0002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
+		name = "SoundBarAppDelegate.m: 48";
+		rLen = 0;
+		rLoc = 1154;
+		rType = 0;
+		vrLen = 1800;
+		vrLoc = 220;
+	};
+	D077635112EC5162002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
+		name = "SoundBarAppDelegate.m: 45";
+		rLen = 0;
+		rLoc = 1056;
+		rType = 0;
+		vrLen = 1798;
+		vrLoc = 220;
+	};
+	D077635712EC54F0002839D0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* SoundBarAppDelegate.m */;
+		name = "SoundBarAppDelegate.m: 36";
+		rLen = 0;
+		rLoc = 910;
+		rType = 0;
+		vrLen = 2192;
+		vrLoc = 322;
+	};
 	D08C09B811F65A3D007E933B /* SoundBar */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -222,7 +299,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -287,9 +364,9 @@
 	};
 	D08C09E511F65B83007E933B /* SoundBarPlayer.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {964, 1248}}";
+			sepNavIntBoundsRect = "{{0, 0}, {964, 1287}}";
 			sepNavSelRange = "{670, 0}";
-			sepNavVisRange = "{411, 1392}";
+			sepNavVisRange = "{285, 1662}";
 			sepNavWindowFrame = "{{80, 77}, {1048, 696}}";
 		};
 	};

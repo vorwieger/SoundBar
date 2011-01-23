@@ -82,11 +82,6 @@
 	longPressGestureRecognizer.minimumPressDuration = 1.0; 
 	[aView addGestureRecognizer:longPressGestureRecognizer];
     [longPressGestureRecognizer release];
-	
-	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapPressGesture:)];
-	[aView addGestureRecognizer:tapGestureRecognizer];
-    [tapGestureRecognizer release];
-	
 }
 
 - (void)handleLongPressGesture:(UIGestureRecognizer *)recognizer {
@@ -101,12 +96,6 @@
 			[self.exportSelector showInView:self.view];
 		}
 	}
-}
-
-- (void)handleTapPressGesture:(UIGestureRecognizer *)recognizer {
-	NSLog(@"handleTapPressGesture detected: %d", recognizer.state);
-	id button = recognizer.view;
-	[self play:button];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

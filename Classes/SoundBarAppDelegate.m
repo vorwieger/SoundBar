@@ -23,7 +23,7 @@
     NSURL *url = (NSURL *)[launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
 
     if (url != nil && [url isFileURL]) {
-        NSLog(@"URL:%@", url);
+        DLog(@"URL:%@", url);
         [viewController setSoundFromURL:url];
     }
 
@@ -36,7 +36,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 	if (url != nil && [url isFileURL]) {
-        NSLog(@"URL:%@, sourceApplication:%@, annotation:%@", url, sourceApplication, annotation);
+        DLog(@"URL:%@, sourceApplication:%@, annotation:%@", url, sourceApplication, annotation);
         [viewController setSoundFromURL:url];
     }
     return YES;
@@ -79,7 +79,7 @@
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    NSLog(@"applicationDidReceiveMemoryWarning!");
+    DLog(@"applicationDidReceiveMemoryWarning!");
     /*
        Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */

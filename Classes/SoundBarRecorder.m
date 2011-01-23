@@ -50,9 +50,9 @@ float const MIN_PEAK = 0.3;
             [self.recorder setDelegate:self];
             [self.recorder setMeteringEnabled:YES];
             [self.recorder prepareToRecord];
-            NSLog(@"recorder initialized: %@", self.name);
+            DLog(@"recorder initialized: %@", self.name);
         } else {
-            NSLog(@"Error initializing recorder %@: %@", self.name, [err localizedDescription]);
+            DLog(@"Error initializing recorder %@: %@", self.name, [err localizedDescription]);
         }
     }
     return self;
@@ -65,13 +65,13 @@ float const MIN_PEAK = 0.3;
     self.peak = 0;
     [self.recorder record];
     [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(levelTimerCallback:) userInfo:nil repeats:YES];
-    NSLog(@"listening...");
+    DLog(@"listening...");
 }
 
 - (void)stopRecording {
     self.recording = NO;
     [self.recorder stop];
-    NSLog(@"stopped.");
+    DLog(@"stopped.");
 }
 
 - (void)levelTimerCallback:(NSTimer *)aTimer {
@@ -79,24 +79,24 @@ float const MIN_PEAK = 0.3;
         [self.recorder updateMeters];
 		float decibel = [recorder averagePowerForChannel:0];
 		float level = pow(10, 0.02 * decibel);
-		NSLog(@"recording level: %f", level);
+		DLog(@"recording level: %f", level);
         if (level > self.peak) {
             self.peak = level;
         }
         if (self.offset == 0 && level > MIN_PEAK) {
             self.offset = MAX(0, [self.recorder currentTime] - 0.05);
-            NSLog(@"recording with offset of %Gs", self.offset);
+            DLog(@"recording with offset of %Gs", self.offset);
         }
     } else {
         [aTimer invalidate];
-        NSLog(@"finish.");
+        DLog(@"finish.");
     }
 }
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)aRecorder successfully:(BOOL)flag {
     NSFileManager *fm = [NSFileManager defaultManager];
     self.size = [[[fm attributesOfItemAtPath:self.recordUrl.path error:NULL] objectForKey:NSFileSize] doubleValue];
-	NSLog(@"audioRecorderDidFinishRecording size:%g, offset %Gs", self.size, self.offset);
+	DLog(@"audioRecorderDidFinishRecording size:%g, offset %Gs", self.size, self.offset);
     [self.delegate didFinishRecording:self];
 }
 

@@ -88,7 +88,7 @@
 	if (recognizer.state == UIGestureRecognizerStateBegan) {
 		id button = recognizer.view;
 		NSString *name = [[button titleLabel] text];
-		NSLog(@"handleLongPressGesture detected: %@", name);
+		DLog(@"handleLongPressGesture detected: %@", name);
 		self.selectedPlayer = [self.players objectForKey:name];
 		if (self.selectedPlayer.size == 0) {
 			[self infoDialog:@"NoSound"];
@@ -100,12 +100,12 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (actionSheet == self.importSelector) {
-		NSLog(@"importSelector: %d", buttonIndex);
+		DLog(@"importSelector: %d", buttonIndex);
 		NSString *name = [NSString stringWithFormat:@"record%d", buttonIndex+1];
 		SoundBarPlayer *player = [self.players objectForKey:name];
 		[player setSoundFromURL:self.importURL];
 	} else if (actionSheet == self.exportSelector) {
-		NSLog(@"exportSelector: %d", buttonIndex);
+		DLog(@"exportSelector: %d", buttonIndex);
 		[self sendSoundAsMail];
 	}
 }
@@ -132,7 +132,7 @@
           didFinishWithResult:(MFMailComposeResult)result 
                         error:(NSError*)error;{
 	if (result == MFMailComposeResultSent) {
-		NSLog(@"Mail sent!");
+		DLog(@"Mail sent!");
 	}
 	[self dismissModalViewControllerAnimated:YES];
 }

@@ -36,7 +36,7 @@
         NSFileManager *fm = [NSFileManager defaultManager];
         self.size = [[[fm attributesOfItemAtPath:self.playUrl.path error:NULL] objectForKey:NSFileSize] doubleValue];
 		
-		NSLog(@"player initialized  : %@", self.name);
+		DLog(@"player initialized  : %@", self.name);
     }
     return self;
 }
@@ -45,11 +45,11 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSError *err = nil;
     if (![fm removeItemAtURL:self.playUrl error:&err]) {
-        NSLog(@"ERROR removeItemAtURL :%@", [err localizedDescription]);
+        DLog(@"ERROR removeItemAtURL :%@", [err localizedDescription]);
     }
     if (aUrl) {
         if (![fm copyItemAtURL:aUrl toURL:self.playUrl error:&err]) {
-            NSLog(@"ERROR copyItemAtURL %@ :%@", aUrl, [err localizedDescription]);
+            DLog(@"ERROR copyItemAtURL %@ :%@", aUrl, [err localizedDescription]);
         }
     }
 
@@ -61,7 +61,7 @@
 
     // setting size
     self.size = [[[fm attributesOfItemAtPath:self.playUrl.path error:NULL] objectForKey:NSFileSize] doubleValue];
-	NSLog(@"player %@ > setSoundFromUrl: %@, size:%d, offset:%f", self.name, self.size, self.offset);
+	DLog(@"player %@ > setSoundFromUrl: %@, size:%d, offset:%f", self.name, self.size, self.offset);
 }
 
 - (void)setSoundFromURL:(NSURL *)aUrl {
@@ -71,11 +71,11 @@
 
 - (void)playSound {
     if (self.size > 0) {
-        NSLog(@"playing sound of size %g and offset of %Gs", self.size, self.offset);
+        DLog(@"playing sound of size %g and offset of %Gs", self.size, self.offset);
         NSError *err;
         AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:playUrl error:&err];
         if (!player) {
-            NSLog(@"error playing sound: %@", [err localizedDescription]);
+            DLog(@"error playing sound: %@", [err localizedDescription]);
         }
         [player setDelegate:self];
         [player setCurrentTime:offset];
@@ -86,7 +86,7 @@
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     [player release];
-    NSLog(@"player finish: %@", player);
+    DLog(@"player finish: %@", player);
 }
 
 - (void)dealloc {

@@ -6,3 +6,9 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+#ifdef DEBUG
+	#define DLog(fmt, ...) NSLog((@"%s " fmt), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+#else
+	#define DLog(...)
+#endif

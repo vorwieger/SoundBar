@@ -16,7 +16,7 @@
 #import "SoundBarRecorder.h"
 #import "SoundBarPlayer.h"
 
-@interface SoundBarViewController : UIViewController <SoundBarRecorderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
+@interface SoundBarViewController : UIViewController <SoundBarRecorderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate> {
 	IBOutlet UIButton *playButton1;
 	IBOutlet UIButton *playButton2;
 	IBOutlet UIButton *playButton3;
@@ -32,8 +32,9 @@
 - (IBAction)startRecording:(id)sender;
 - (IBAction)stopRecording:(id)sender;
 
-- (void)errorDialog:(NSString *)message;
-- (void)infoDialog:(NSString *)message;
+- (void)showDialogWithTitle:(NSString *)title andMessage:(NSString *)message;
+- (void)errorDialog:(NSString *)messageKey;
+- (void)infoDialog:(NSString *)messageKey;
 
 @end
 

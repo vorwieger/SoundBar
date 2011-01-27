@@ -22,9 +22,9 @@
 @synthesize playUrl;
 @synthesize offset, size;
 
-- (id)initWithName:(NSString *)theName {
+- (id)initWithName:(NSString *)aName {
     if ( (self = [super init]) ) {
-        self.name = theName;
+        self.name = aName;
 		NSString *fileName = [NSString stringWithFormat:@"%@.caf", self.name];
 
         NSString *playPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:fileName];

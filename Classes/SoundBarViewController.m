@@ -16,6 +16,7 @@
 @property (readwrite, retain) UIActionSheet *exportSelector;
 @property (readwrite, retain) NSURL *importURL;
 @property (readwrite, retain) SoundBarPlayer *selectedPlayer;
+@property (readwrite, retain) UIDocumentInteractionController *documentInteractionController;
 - (void)addGestureRecognizers:(UIView *)aView;
 @end
 
@@ -25,7 +26,7 @@
 @synthesize players;
 @synthesize recorders;
 @synthesize importSelector, exportSelector;
-@synthesize importURL, selectedPlayer;
+@synthesize importURL, selectedPlayer, documentInteractionController;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -62,17 +63,20 @@
 	[self addGestureRecognizers:playButton4];
 
 	// initialize Import/Export ActionSheets
-	self.importSelector = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ImportTitle", nil)
+	self.importSelector = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ImportTitle", nil)
 													  delegate:self 
 											 cancelButtonTitle:NSLocalizedString(@"CancelButton", nil)
 										destructiveButtonTitle:nil
-											 otherButtonTitles:NSLocalizedString(@"ImportSound1Button", nil),NSLocalizedString(@"ImportSound2Button", nil),NSLocalizedString(@"ImportSound3Button", nil), NSLocalizedString(@"ImportSound4Button", nil), nil];
+											 otherButtonTitles:NSLocalizedString(@"ImportSound1Button", nil),NSLocalizedString(@"ImportSound2Button", nil),NSLocalizedString(@"ImportSound3Button", nil), NSLocalizedString(@"ImportSound4Button", nil), nil] autorelease];
 	
-	self.exportSelector = [[UIActionSheet alloc] initWithTitle:nil
+	self.exportSelector = [[[UIActionSheet alloc] initWithTitle:nil
 													  delegate:self 
 											 cancelButtonTitle:NSLocalizedString(@"CancelButton", nil)
 										destructiveButtonTitle:nil
-											 otherButtonTitles:NSLocalizedString(@"SendByMailButton", nil), nil];
+											 otherButtonTitles:NSLocalizedString(@"SendByMailButton", nil), NSLocalizedString(@"ExportButton", nil), nil] autorelease];
+	
+	self.documentInteractionController = [[[UIDocumentInteractionController alloc] init] autorelease];
+	self.documentInteractionController.delegate = self;
 	
 	[super viewDidLoad];
 }
@@ -106,7 +110,19 @@
 		[player setSoundFromURL:self.importURL];
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
-		[self sendSoundAsMail];
+		switch (buttonIndex) {
+			case 0:
+				[self sendSoundAsMail];
+				break;
+			case 1:
+				self.documentInteractionController.URL = self.selectedPlayer.playUrl;			
+				if (![self.documentInteractionController presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES]) {
+					[self infoDialog:@"NoRegistratedApp"];
+				}
+				break;
+			default:
+				break;
+		}
 	}
 }
 
@@ -115,11 +131,9 @@
 		SoundBarPlayer *player = self.selectedPlayer;
 		NSData *data = [NSData dataWithContentsOfURL:player.playUrl];
 		NSString *fileName = player.playUrl.lastPathComponent;
-		
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
 		[mailController setSubject:NSLocalizedString(@"MailSubject", nil)];
-		[mailController setMessageBody:NSLocalizedString(@"MailMessageBody", nil) isHTML:NO];
 		[mailController addAttachmentData:data mimeType:@"" fileName:fileName];
 		[self presentModalViewController:mailController animated:YES];
 		[mailController release];
@@ -130,9 +144,10 @@
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller  
           didFinishWithResult:(MFMailComposeResult)result 
-                        error:(NSError*)error;{
-	if (result == MFMailComposeResultSent) {
-		DLog(@"Mail sent!");
+                        error:(NSError*)error {
+	if (result == MFMailComposeResultFailed) {
+		[self showDialogWithTitle:NSLocalizedString(@"ErrorSendingMail", nil) 
+					   andMessage:[error localizedFailureReason]];
 	}
 	[self dismissModalViewControllerAnimated:YES];
 }
@@ -198,15 +213,18 @@
     [versionLabel release];
     [recorders release];
     [players release];
+	[importSelector release];
+	[exportSelector release];
+	[documentInteractionController release];
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Error/Info-Dialog
 
-- (void)showDialogWithTitle:(NSString *)title andMessageKey:(NSString *)messageKey {
+- (void)showDialogWithTitle:(NSString *)title andMessage:(NSString *)message {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:NSLocalizedString(messageKey, nil)
+                                                    message:message
                                                    delegate:nil
                                           cancelButtonTitle:NSLocalizedString(@"OKButton", nil)
                                           otherButtonTitles:nil];
@@ -215,12 +233,13 @@
     return;
 }
 
-- (void)errorDialog:(NSString *)message {
-    [self showDialogWithTitle:NSLocalizedString(@"ErrorLabel", nil) andMessageKey:message];
+- (void)errorDialog:(NSString *)messageKey {
+	NSLog(@"Error: %@", messageKey);
+    [self showDialogWithTitle:NSLocalizedString(@"ErrorLabel", nil) andMessage:NSLocalizedString(messageKey, nil)];
 }
 
-- (void)infoDialog:(NSString *)message {
-    [self showDialogWithTitle:NSLocalizedString(@"InfoLabel", nil) andMessageKey:message];
+- (void)infoDialog:(NSString *)messageKey {
+    [self showDialogWithTitle:NSLocalizedString(@"InfoLabel", nil) andMessage:NSLocalizedString(messageKey, nil)];
 }
 
 @end

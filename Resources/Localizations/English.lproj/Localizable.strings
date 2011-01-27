@@ -10,6 +10,9 @@
 "CancelButton" = "Cancel";
 "OKButton" = "OK";
 "SendByMailButton" = "Email Sound";
+"ExportButton" = "Export ...";
+
+"MailSubject" = "SoundBar recording";
 
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";
@@ -18,3 +21,5 @@
 "NoRecording" =  "To record a sound press and hold the red button!";
 "TooLow" =  "The recording was too quiet!";
 "NoMail" = "Email is not available! Please configure Your Mail Account.";
+"ErrorSendingMail" = "Error sending Mail!";
+"NoRegistratedApp" = "No installed apps support opening this file.";

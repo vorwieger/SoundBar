@@ -63,7 +63,7 @@ float const MIN_PEAK = 0.3;
     self.size = 0;
     self.offset = 0;
     self.peak = 0;
-    [self.recorder record];
+    [self.recorder recordForDuration:(60)];
     [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(levelTimerCallback:) userInfo:nil repeats:YES];
     DLog(@"listening...");
 }
@@ -79,7 +79,7 @@ float const MIN_PEAK = 0.3;
         [self.recorder updateMeters];
 		float decibel = [recorder averagePowerForChannel:0];
 		float level = pow(10, 0.02 * decibel);
-		DLog(@"recording level: %f", level);
+		//DLog(@"recording level: %f", level);
         if (level > self.peak) {
             self.peak = level;
         }

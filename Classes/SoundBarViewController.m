@@ -60,9 +60,16 @@
     // preserve compatibility for version prior 1.2
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     for (SoundBarPlayer *player in self.players.allValues) {
-        NSTimeInterval offset = [prefs doubleForKey:player.name];
-        if (offset) {
-            //[player setSoundFromURL:player.playUrl withOffset:offset];
+        if ([prefs objectForKey:player.name]) {
+            NSTimeInterval offset = [prefs doubleForKey:player.name];
+            if (offset) {
+                DLog(@"converting %@ -> clip", player.name);
+                [ClipSound clip:player.playUrl offset:MAX(0, offset - 0.05)];
+            } else {
+                DLog(@"converting %@ -> delete", player.name);
+                NSFileManager *fm = [NSFileManager defaultManager];
+                [fm removeItemAtURL:player.playUrl error:NULL];
+            }
             [prefs removeObjectForKey:player.name];
         }
     }
@@ -123,8 +130,7 @@
             DLog(@"setting %@ to importURL: %@", player.name, importURL);
             NSFileManager *fm = [NSFileManager defaultManager];
             [fm removeItemAtURL:player.playUrl error:NULL];
-            [fm copyItemAtURL:self.importURL toURL:player.playUrl error:NULL];
-            //player.playUrl = self.importURL;
+            [fm moveItemAtURL:self.importURL toURL:player.playUrl error:NULL];
         }
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
@@ -207,8 +213,6 @@
         [self infoDialog:@"TooLow"];
     } else {
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
-        //player.playUrl = recorder.recordUrl;
-        //[player setSoundFromURL:recorder.recordUrl withOffset:recorder.offset];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
     }
 }

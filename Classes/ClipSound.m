@@ -42,7 +42,7 @@
 	return frameCount;
 }
 
-+ (OSStatus) clip:(NSURL*)infile outfile:(NSURL*)outfile offset:(double)offset {
++ (void) clip:(NSURL*)infile outfile:(NSURL*)outfile offset:(double)offset {
     ExtAudioFileRef	inputAudioFileRef = NULL;
     ExtAudioFileRef	outputAudioFileRef = NULL;
     UInt8 *buffer = malloc(BUFFER_SIZE);
@@ -96,7 +96,14 @@
         if (inputAudioFileRef) ExtAudioFileDispose(inputAudioFileRef);
         if (outputAudioFileRef) ExtAudioFileDispose(outputAudioFileRef);
     }
-    return err;
+}
+
++ (void) clip:(NSURL*)inOutFile offset:(double)offset {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *tempUrl = [NSURL fileURLWithPath:[NSTemporaryDirectory () stringByAppendingPathComponent:@"temp.caf"]];
+    [ClipSound clip:inOutFile outfile:tempUrl offset:offset];
+    [fm removeItemAtURL:inOutFile error:NULL];
+    [fm moveItemAtURL:tempUrl toURL:inOutFile error:NULL];
 }
 
 @end

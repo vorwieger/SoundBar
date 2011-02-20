@@ -12,6 +12,7 @@
 @interface ClipSound : NSObject {
 }
 
-+ (OSStatus) clip:(NSURL*)infile outfile:(NSURL*)outfile offset:(double)offset;
++ (void) clip:(NSURL*)infile outfile:(NSURL*)outfile offset:(double)offset;
++ (void) clip:(NSURL*)inOutFile offset:(double)offset;
 
 @end

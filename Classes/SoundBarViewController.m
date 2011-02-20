@@ -7,6 +7,7 @@
 //
 
 #import "SoundBarViewController.h"
+#import "ClipSound.h"
 
 @interface SoundBarViewController ()
 @property (readwrite, retain) UILabel *versionLabel;
@@ -55,6 +56,17 @@
         [self.recorders setObject:recorder forKey:name];
         [self.players setObject:player forKey:name];
     }
+    
+    // preserve compatibility for version prior 1.2
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    for (SoundBarPlayer *player in self.players.allValues) {
+        NSTimeInterval offset = [prefs doubleForKey:player.name];
+        if (offset) {
+            //[player setSoundFromURL:player.playUrl withOffset:offset];
+            [prefs removeObjectForKey:player.name];
+        }
+    }
+    [prefs synchronize];
 	
 	// initialize GestureRecognizer
 	[self addGestureRecognizers:playButton1];
@@ -107,7 +119,13 @@
 		DLog(@"importSelector: %d", buttonIndex);
 		NSString *name = [NSString stringWithFormat:@"record%d", buttonIndex+1];
 		SoundBarPlayer *player = [self.players objectForKey:name];
-		[player setSoundFromURL:self.importURL];
+        if (player) {
+            DLog(@"setting %@ to importURL: %@", player.name, importURL);
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm removeItemAtURL:player.playUrl error:NULL];
+            [fm copyItemAtURL:self.importURL toURL:player.playUrl error:NULL];
+            //player.playUrl = self.importURL;
+        }
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
 		switch (buttonIndex) {
@@ -189,7 +207,9 @@
         [self infoDialog:@"TooLow"];
     } else {
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
-        [player setSoundFromURL:recorder.recordUrl withOffset:recorder.offset];
+        //player.playUrl = recorder.recordUrl;
+        //[player setSoundFromURL:recorder.recordUrl withOffset:recorder.offset];
+        [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
     }
 }
 

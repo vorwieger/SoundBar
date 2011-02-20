@@ -39,6 +39,7 @@
 		D09E871812E2154D005E095B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E871712E2154D005E095B /* MessageUI.framework */; };
 		D0A236D61210B8420036CAAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D045AA47120F5A40005AB28C /* Localizable.strings */; };
 		D0AF0BB812DF962F0093E29D /* SoundBarRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */; };
+		D0B0E600130F4B9000B2748F /* ClipSound.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B0E5FF130F4B8F00B2748F /* ClipSound.m */; };
 		D0B4FE4B12EB7A3A00D55F6B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B4FE4A12EB7A3A00D55F6B /* Default@2x.png */; };
 		D0DA9F19120F5A92005C0732 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F17120F5A92005C0732 /* MainWindow.xib */; };
 		D0DA9F1A120F5A92005C0732 /* SoundBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DA9F18120F5A92005C0732 /* SoundBarViewController.xib */; };
@@ -85,6 +86,8 @@
 		D09E871712E2154D005E095B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D0AF0BB612DF962F0093E29D /* SoundBarRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBarRecorder.h; sourceTree = "<group>"; };
 		D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundBarRecorder.m; sourceTree = "<group>"; };
+		D0B0E5FF130F4B8F00B2748F /* ClipSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipSound.m; sourceTree = "<group>"; };
+		D0B0E601130F4B9900B2748F /* ClipSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipSound.h; sourceTree = "<group>"; };
 		D0B4FE4A12EB7A3A00D55F6B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D0DA9F17120F5A92005C0732 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = Resources/NIB/MainWindow.xib; sourceTree = "<group>"; };
 		D0DA9F18120F5A92005C0732 /* SoundBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SoundBarViewController.xib; path = Resources/NIB/SoundBarViewController.xib; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */,
 				D08C09E411F65B83007E933B /* SoundBarPlayer.h */,
 				D08C09E511F65B83007E933B /* SoundBarPlayer.m */,
+				D0B0E601130F4B9900B2748F /* ClipSound.h */,
+				D0B0E5FF130F4B8F00B2748F /* ClipSound.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				28D7ACF80DDB3853001CB0EB /* SoundBarViewController.m in Sources */,
 				D08C09E611F65B83007E933B /* SoundBarPlayer.m in Sources */,
 				D0AF0BB812DF962F0093E29D /* SoundBarRecorder.m in Sources */,
+				D0B0E600130F4B9000B2748F /* ClipSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +398,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

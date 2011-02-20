@@ -15,12 +15,9 @@
 
 @property (readonly, retain) NSString *name;
 @property (readonly, retain) NSURL *playUrl;
-@property (readonly) NSTimeInterval offset;
 @property (readonly) double size;
 
 - (id)initWithName:(NSString *)theName;
-- (void)setSoundFromURL:(NSURL *)url withOffset:(NSTimeInterval)aOffset;
-- (void)setSoundFromURL:(NSURL *)url;
 - (void)playSound;
 
 @end

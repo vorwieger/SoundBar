@@ -46,6 +46,7 @@
     AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
 
     // initialize recorders and players
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     self.recorders = [NSMutableDictionary dictionaryWithCapacity:4];
     self.players = [NSMutableDictionary dictionaryWithCapacity:4];
     for (int i = 1; i <= 4; i++) {
@@ -55,26 +56,20 @@
         recorder.delegate = self;
         [self.recorders setObject:recorder forKey:name];
         [self.players setObject:player forKey:name];
-    }
-    
-    // preserve compatibility for version prior 1.2
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    for (SoundBarPlayer *player in self.players.allValues) {
-        if ([prefs objectForKey:player.name]) {
-            NSTimeInterval offset = [prefs doubleForKey:player.name];
-            if (offset) {
-                DLog(@"converting %@ -> clip", player.name);
-                [ClipSound clip:player.playUrl offset:MAX(0, offset - 0.05)];
-            } else {
-                DLog(@"converting %@ -> delete", player.name);
-                NSFileManager *fm = [NSFileManager defaultManager];
-                [fm removeItemAtURL:player.playUrl error:NULL];
-            }
-            [prefs removeObjectForKey:player.name];
+        
+        // preserve compatibility for version prior 1.1
+        NSTimeInterval offset = [prefs doubleForKey:name];
+        if (offset) {
+            DLog(@"converting %@ -> clip", name);
+            [player setDefaultPlayUrl];
+            NSString *oldPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"]
+                                  stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf", name]];
+            [ClipSound clip:[NSURL fileURLWithPath:oldPath] outfile:player.playUrl offset:MAX(0, offset - 0.05)];
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm removeItemAtPath:oldPath error:NULL];
         }
     }
-    [prefs synchronize];
-	
+    
 	// initialize GestureRecognizer
 	[self addGestureRecognizers:playButton1];
 	[self addGestureRecognizers:playButton2];
@@ -130,7 +125,7 @@
             DLog(@"setting %@ to importURL: %@", player.name, importURL);
             NSFileManager *fm = [NSFileManager defaultManager];
             [fm removeItemAtURL:player.playUrl error:NULL];
-            [fm moveItemAtURL:self.importURL toURL:player.playUrl error:NULL];
+            player.playUrl = self.importURL;
         }
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
@@ -213,6 +208,7 @@
         [self infoDialog:@"TooLow"];
     } else {
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
+        [player setDefaultPlayUrl];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
     }
 }

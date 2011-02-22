@@ -58,8 +58,13 @@
 
         AudioStreamBasicDescription	outputFileFormat;
         [self setDefaultAudioFormatFlags:&outputFileFormat numChannels:1];
-        err = ExtAudioFileCreateWithURL((CFURLRef)outfile, kAudioFileCAFType, &outputFileFormat,
-									NULL, kAudioFileFlags_EraseFile, &outputAudioFileRef);
+        AudioFileTypeID typeId = kAudioFileCAFType;
+        UInt32 flags = kAudioFileFlags_EraseFile;
+        if ([outfile.pathExtension isEqualToString:@"wav"]) {
+            typeId = kAudioFileWAVEType;
+            flags += kAudioFileFlags_DontPageAlignAudioData;
+        }
+        err = ExtAudioFileCreateWithURL((CFURLRef)outfile, typeId, &outputFileFormat, NULL, flags, &outputAudioFileRef);
         if (err) @throw [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 
         // Buffer to read from source file and write to dest file
@@ -96,14 +101,6 @@
         if (inputAudioFileRef) ExtAudioFileDispose(inputAudioFileRef);
         if (outputAudioFileRef) ExtAudioFileDispose(outputAudioFileRef);
     }
-}
-
-+ (void) clip:(NSURL*)inOutFile offset:(double)offset {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSURL *tempUrl = [NSURL fileURLWithPath:[NSTemporaryDirectory () stringByAppendingPathComponent:@"temp.caf"]];
-    [ClipSound clip:inOutFile outfile:tempUrl offset:offset];
-    [fm removeItemAtURL:inOutFile error:NULL];
-    [fm moveItemAtURL:tempUrl toURL:inOutFile error:NULL];
 }
 
 @end

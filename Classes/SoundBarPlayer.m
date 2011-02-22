@@ -8,8 +8,7 @@
 #import "SoundBarPlayer.h"
 
 @interface SoundBarPlayer ()
-@property (readwrite, retain) NSString *name;
-@property (readwrite, retain) NSURL *playUrl;
+@property (readwrite, retain, nonatomic) NSString *name;
 @end
 
 @implementation SoundBarPlayer
@@ -21,16 +20,33 @@
 - (id)initWithName:(NSString *)aName {
     if ( (self = [super init]) ) {
         self.name = aName;
-		NSString *fileName = [NSString stringWithFormat:@"%@.caf", self.name];
-        NSString *playPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"]
-                              stringByAppendingPathComponent:fileName];
-        self.playUrl =  [NSURL fileURLWithPath:playPath];
-		DLog(@"player initialized  : %@", self.name);
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        playUrl = [[prefs URLForKey:self.name] retain];        
+		DLog(@"player %@ initialized with URL %@", self.name, self.playUrl);
     }
     return self;
 }
 
+- (void)setDefaultPlayUrl {
+    NSString *fileName = [NSString stringWithFormat:@"%@.wav", self.name];
+    NSString *playPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"]
+                          stringByAppendingPathComponent:fileName];
+    self.playUrl =  [NSURL fileURLWithPath:playPath];
+}
+
+- (void)setPlayUrl:(NSURL *)newUrl {
+    if (playUrl != newUrl) {
+        DLog(@"setting new URL: %@", newUrl);
+        [playUrl autorelease];
+        playUrl = [newUrl retain];
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setURL:playUrl forKey:self.name];
+        [prefs synchronize];
+    }
+}
+
 - (double)size {
+    if (!self.playUrl) return 0;
     NSFileManager *fm = [NSFileManager defaultManager];
     return [[[fm attributesOfItemAtPath:self.playUrl.path error:NULL] objectForKey:NSFileSize] doubleValue];
 }

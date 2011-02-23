@@ -110,9 +110,9 @@
 	[super viewDidLoad];
 }
 
-- (void)flashStar:(NSString *)name {
+- (void)flashStar:(NSString *)name withDelay:(NSTimeInterval)delay {
     UIImageView *star = [self.stars objectForKey:name];
-    [UIView animateWithDuration:0.1 animations:^{
+    [UIView animateWithDuration:0.1 delay:delay options:0 animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
        // transform = CGAffineTransformRotate (transform, 1.0);
         star.transform = transform;
@@ -158,7 +158,7 @@
             NSFileManager *fm = [NSFileManager defaultManager];
             [fm removeItemAtURL:player.playUrl error:NULL];
             player.playUrl = self.importURL;
-            [self flashStar:name];
+            [self flashStar:name withDelay:0.5];
         }
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
@@ -243,7 +243,7 @@
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
         [player setDefaultPlayUrl];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
-        [self flashStar:recorder.name];
+        [self flashStar:recorder.name withDelay:0.0];
     }
 }
 

@@ -24,7 +24,10 @@
 }
 
 @property (readonly, retain) IBOutlet UILabel *versionLabel;
-
+@property (readonly, retain) IBOutlet UIImageView *star1;
+@property (readonly, retain) IBOutlet UIImageView *star2;
+@property (readonly, retain) IBOutlet UIImageView *star3;
+@property (readonly, retain) IBOutlet UIImageView *star4;
 - (void)setSoundFromURL:(NSURL *)aURL;
 - (void)sendSoundAsMail;
 

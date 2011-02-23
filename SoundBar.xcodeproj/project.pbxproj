@@ -18,6 +18,7 @@
 		D08C09E611F65B83007E933B /* SoundBarPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D08C09E511F65B83007E933B /* SoundBarPlayer.m */; };
 		D08C09ED11F65D69007E933B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08C09EC11F65D69007E933B /* AVFoundation.framework */; };
 		D08C09F111F65D71007E933B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08C09F011F65D71007E933B /* CoreAudio.framework */; };
+		D09392091315AF5E0022DBED /* Star-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D09392081315AF5E0022DBED /* Star-icon.png */; };
 		D09C55AF12EB4989008008D2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D09C559D12EB4989008008D2 /* background.png */; };
 		D09C55B012EB4989008008D2 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D09C559E12EB4989008008D2 /* background@2x.png */; };
 		D09C55B912EB4989008008D2 /* play_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D09C55A712EB4989008008D2 /* play_pressed.png */; };
@@ -65,6 +66,7 @@
 		D08C09E511F65B83007E933B /* SoundBarPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundBarPlayer.m; sourceTree = "<group>"; };
 		D08C09EC11F65D69007E933B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D08C09F011F65D71007E933B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		D09392081315AF5E0022DBED /* Star-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star-icon.png"; sourceTree = "<group>"; };
 		D09C559D12EB4989008008D2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/Images/background.png; sourceTree = "<group>"; };
 		D09C559E12EB4989008008D2 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resources/Images/background@2x.png"; sourceTree = "<group>"; };
 		D09C55A712EB4989008008D2 /* play_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play_pressed.png; path = Resources/Images/play_pressed.png; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		D09C55CE12EB4A18008008D2 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				D09392081315AF5E0022DBED /* Star-icon.png */,
 				D09C55D712EB4AE6008008D2 /* iTunesArtwork */,
 				D09C55D512EB4AE6008008D2 /* Icon.png */,
 				D09C55D612EB4AE6008008D2 /* Icon@2x.png */,
@@ -307,6 +310,7 @@
 				D09C55DE12EB4AE6008008D2 /* iTunesArtwork in Resources */,
 				D09C55E212EB4B0A008008D2 /* Default.png in Resources */,
 				D0B4FE4B12EB7A3A00D55F6B /* Default@2x.png in Resources */,
+				D09392091315AF5E0022DBED /* Star-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

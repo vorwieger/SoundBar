@@ -13,6 +13,7 @@
 @property (readwrite, retain) UILabel *versionLabel;
 @property (readwrite, retain) NSMutableDictionary *players;
 @property (readwrite, retain) NSMutableDictionary *recorders;
+@property (readwrite, retain) NSMutableDictionary *stars;
 @property (readwrite, retain) UIActionSheet *importSelector;
 @property (readwrite, retain) UIActionSheet *exportSelector;
 @property (readwrite, retain) NSURL *importURL;
@@ -23,7 +24,7 @@
 
 @implementation SoundBarViewController
 
-@synthesize versionLabel;
+@synthesize versionLabel, star1, star2, star3, star4, stars;
 @synthesize players;
 @synthesize recorders;
 @synthesize importSelector, exportSelector;
@@ -95,8 +96,35 @@
 	
 	self.documentInteractionController = [[[UIDocumentInteractionController alloc] init] autorelease];
 	self.documentInteractionController.delegate = self;
-	
+    
+    self.stars = [NSMutableDictionary dictionaryWithCapacity:4];
+    [self.stars setObject:self.star1 forKey:@"SoundBar-1"];
+    [self.stars setObject:self.star2 forKey:@"SoundBar-2"];
+    [self.stars setObject:self.star3 forKey:@"SoundBar-3"];
+    [self.stars setObject:self.star4 forKey:@"SoundBar-4"];
+    self.star1.alpha = 0.0;
+    self.star2.alpha = 0.0;
+    self.star3.alpha = 0.0;
+	self.star4.alpha = 0.0;
+    
 	[super viewDidLoad];
+}
+
+- (void)flashStar:(NSString *)name {
+    UIImageView *star = [self.stars objectForKey:name];
+    [UIView animateWithDuration:0.1 animations:^{
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+       // transform = CGAffineTransformRotate (transform, 1.0);
+        star.transform = transform;
+        star.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1.0 animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+            //transform = CGAffineTransformRotate (transform, -3.14);
+            star.transform = transform;
+            star.alpha = 0.0;
+        }];
+    }];
 }
 
 - (void)addGestureRecognizers:(UIView *)aView {
@@ -130,6 +158,7 @@
             NSFileManager *fm = [NSFileManager defaultManager];
             [fm removeItemAtURL:player.playUrl error:NULL];
             player.playUrl = self.importURL;
+            [self flashStar:name];
         }
 	} else if (actionSheet == self.exportSelector) {
 		DLog(@"exportSelector: %d", buttonIndex);
@@ -156,7 +185,6 @@
 		NSString *fileName = player.playUrl.lastPathComponent;
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
-        //[mailController setToRecipients:[NSArray arrayWithObjects:@" ", nil]];
 		[mailController setSubject:NSLocalizedString(@"MailSubject", nil)];
 		[mailController addAttachmentData:data mimeType:@"" fileName:fileName];
 		[self presentModalViewController:mailController animated:YES];
@@ -185,7 +213,7 @@
     NSString *name = [[sender titleLabel] text];
     SoundBarPlayer *player = [self.players objectForKey:name];
     if (player.size == 0) {
-        [self infoDialog:@"NoSound"];
+       [self infoDialog:@"NoSound"];
     } else {
         [player playSound];
     }
@@ -215,6 +243,7 @@
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
         [player setDefaultPlayUrl];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
+        [self flashStar:recorder.name];
     }
 }
 

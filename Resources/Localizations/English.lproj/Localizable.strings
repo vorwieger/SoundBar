@@ -1,7 +1,7 @@
 
 "Version" = "Version %@";
 
-"ImportTitle" = "Import of sound";
+"ImportTitle" = "Import of sounds\nPlease select a button. Caution: The existing sound will be overwritten!";
 "ImportSound1Button" = "Position 1";
 "ImportSound2Button" = "Position 2";
 "ImportSound3Button" = "Position 3";

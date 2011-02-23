@@ -1,11 +1,11 @@
 
 "Version" = "Version %@";
 
-"ImportTitle" = "Import des Sounds";
-"ImportSound1Button" = "1. Position";
-"ImportSound2Button" = "2. Position";
-"ImportSound3Button" = "3. Position";
-"ImportSound4Button" = "4. Position";
+"ImportTitle" = "Import von Tönen.\nBitte wählen Sie die gewünschte Schaltfläche aus. Achtung: Ein bereits gespeicherter Ton wird gelöscht!";
+"ImportSound1Button" = "Position 1";
+"ImportSound2Button" = "Position 2";
+"ImportSound3Button" = "Position 3";
+"ImportSound4Button" = "Position 4";
 
 "CancelButton" = "Abbrechen";
 "OKButton" = "OK";

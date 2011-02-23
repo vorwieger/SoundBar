@@ -12,7 +12,7 @@
 "SendByMailButton" = "Email Sound";
 "ExportButton" = "Export ...";
 
-"MailSubject" = "SoundBar recording";
+"MailSubject" = "SoundBar";
 
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";

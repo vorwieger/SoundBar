@@ -50,7 +50,7 @@
     self.recorders = [NSMutableDictionary dictionaryWithCapacity:4];
     self.players = [NSMutableDictionary dictionaryWithCapacity:4];
     for (int i = 1; i <= 4; i++) {
-        NSString *name = [NSString stringWithFormat:@"record%d", i];
+        NSString *name = [NSString stringWithFormat:@"SoundBar-%d", i];
         SoundBarRecorder *recorder = [[[SoundBarRecorder alloc] initWithName:name] autorelease];
         SoundBarPlayer *player = [[[SoundBarPlayer alloc] initWithName:name] autorelease];
         recorder.delegate = self;
@@ -58,14 +58,18 @@
         [self.players setObject:player forKey:name];
         
         // preserve compatibility for version prior 1.1
-        NSTimeInterval offset = [prefs doubleForKey:name];
-        if (offset) {
-            DLog(@"converting %@ -> clip", name);
-            [player setDefaultPlayUrl];
-            NSString *oldPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"]
-                                  stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf", name]];
-            [ClipSound clip:[NSURL fileURLWithPath:oldPath] outfile:player.playUrl offset:MAX(0, offset - 0.05)];
-            NSFileManager *fm = [NSFileManager defaultManager];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *oldName = [NSString stringWithFormat:@"record%d", i];
+        NSString *oldPath = [[NSHomeDirectory () stringByAppendingPathComponent:@"Documents"]
+                             stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf", oldName]];
+        if ([fm isReadableFileAtPath:oldPath]) {
+            DLog(@"converting %@ to %@", name, oldName);
+            NSTimeInterval offset = [prefs doubleForKey:oldName];
+            [prefs removeObjectForKey:oldName];
+            if (offset) {
+                [player setDefaultPlayUrl];
+                [ClipSound clip:[NSURL fileURLWithPath:oldPath] outfile:player.playUrl offset:MAX(0, offset - 0.05)];
+            }
             [fm removeItemAtPath:oldPath error:NULL];
         }
     }
@@ -119,7 +123,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (actionSheet == self.importSelector) {
 		DLog(@"importSelector: %d", buttonIndex);
-		NSString *name = [NSString stringWithFormat:@"record%d", buttonIndex+1];
+		NSString *name = [NSString stringWithFormat:@"SoundBar-%d", buttonIndex+1];
 		SoundBarPlayer *player = [self.players objectForKey:name];
         if (player) {
             DLog(@"setting %@ to importURL: %@", player.name, importURL);
@@ -152,6 +156,7 @@
 		NSString *fileName = player.playUrl.lastPathComponent;
 		MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 		mailController.mailComposeDelegate = self;
+        //[mailController setToRecipients:[NSArray arrayWithObjects:@" ", nil]];
 		[mailController setSubject:NSLocalizedString(@"MailSubject", nil)];
 		[mailController addAttachmentData:data mimeType:@"" fileName:fileName];
 		[self presentModalViewController:mailController animated:YES];

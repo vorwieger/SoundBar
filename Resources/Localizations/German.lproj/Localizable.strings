@@ -12,7 +12,7 @@
 "SendByMailButton" = "Per E-Mail senden";
 "ExportButton" = "Exportieren ...";
 
-"MailSubject" = "SoundBar Aufnahme";
+"MailSubject" = "SoundBar";
 
 "ErrorLabel" = "Fehler!";
 "InfoLabel" = "Information";
@@ -21,5 +21,5 @@
 "NoRecording" = "Zur Aufnahme von Sprache, Tönen oder Geräusche den roten Aufnahmeknopf gedrückt halten!";
 "TooLow" = "Die Aufnahme war zu leise!";
 "NoMail" = "Der E-Mail Versand ist nicht möglich. Eventuell ist der Mail Account nicht richtig konfiguriert.";
-"ErrorSendingMail" = "Fehler beim Mailversand";
+"ErrorSendingMail" = "Fehler beim Mailversand!";
 "NoRegistratedApp" = "Keiner der installierten Programme unterstützt das Öffnen von Sound Dateien.";

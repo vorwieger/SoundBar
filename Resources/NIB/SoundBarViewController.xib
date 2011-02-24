@@ -240,6 +240,7 @@
 						<string key="NSFrame">{{182, 354}, {114, 114}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -289,49 +290,49 @@
 					<object class="IBUIImageView" id="598557224">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{238, 5}, {64, 64}}</string>
+						<string key="NSFrame">{{238, 5}, {48, 48}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="448814914"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="1025052149">
+						<object class="NSCustomResource" key="IBUIImage" id="806850750">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Star-icon.png</string>
+							<string key="NSResourceName">star.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="937051819">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{238, 120}, {64, 64}}</string>
+						<string key="NSFrame">{{238, 120}, {48, 48}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="603967522"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="1025052149"/>
+						<reference key="IBUIImage" ref="806850750"/>
 					</object>
 					<object class="IBUIImageView" id="1009677893">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{238, 236}, {64, 64}}</string>
+						<string key="NSFrame">{{238, 235}, {48, 48}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="977432838"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="1025052149"/>
+						<reference key="IBUIImage" ref="806850750"/>
 					</object>
 					<object class="IBUIImageView" id="320497412">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{238, 351}, {64, 64}}</string>
+						<string key="NSFrame">{{238, 351}, {48, 48}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1023471258"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="1025052149"/>
+						<reference key="IBUIImage" ref="806850750"/>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
@@ -923,21 +924,21 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>Star-icon.png</string>
 				<string>background.png</string>
 				<string>play.png</string>
 				<string>play_pressed.png</string>
 				<string>rec.png</string>
 				<string>rec_pressed.png</string>
+				<string>star.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{128, 128}</string>
 				<string>{320, 480}</string>
 				<string>{114, 114}</string>
 				<string>{114, 114}</string>
 				<string>{114, 114}</string>
 				<string>{114, 114}</string>
+				<string>{48, 48}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">294</string>

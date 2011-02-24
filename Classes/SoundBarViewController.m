@@ -112,18 +112,18 @@
 
 - (void)flashStar:(NSString *)name withDelay:(NSTimeInterval)delay {
     UIImageView *star = [self.stars objectForKey:name];
-    [UIView animateWithDuration:0.1 delay:delay options:0 animations:^{
+    [UIView animateWithDuration:0.1 delay:delay options:UIViewAnimationOptionAllowUserInteraction animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
        // transform = CGAffineTransformRotate (transform, 1.0);
         star.transform = transform;
         star.alpha = 1.0;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:1.0 animations:^{
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGAffineTransform transform = CGAffineTransformMakeScale(0.1f, 0.1f);
             //transform = CGAffineTransformRotate (transform, -3.14);
             star.transform = transform;
             star.alpha = 0.0;
-        }];
+        } completion:NULL];
     }];
 }
 

@@ -13,7 +13,7 @@
 @property (readwrite, retain) UILabel *versionLabel;
 @property (readwrite, retain) NSMutableDictionary *players;
 @property (readwrite, retain) NSMutableDictionary *recorders;
-@property (readwrite, retain) NSMutableDictionary *stars;
+@property (readwrite, retain) NSMutableDictionary *stars, *lights;
 @property (readwrite, retain) UIActionSheet *importSelector;
 @property (readwrite, retain) UIActionSheet *exportSelector;
 @property (readwrite, retain) NSURL *importURL;
@@ -24,7 +24,9 @@
 
 @implementation SoundBarViewController
 
-@synthesize versionLabel, star1, star2, star3, star4, stars;
+@synthesize versionLabel;
+@synthesize star1, star2, star3, star4, stars;
+@synthesize light1, light2, light3, light4, lights;
 @synthesize players;
 @synthesize recorders;
 @synthesize importSelector, exportSelector;
@@ -107,6 +109,16 @@
     self.star3.alpha = 0.0;
 	self.star4.alpha = 0.0;
     
+    self.lights = [NSMutableDictionary dictionaryWithCapacity:4];
+    [self.lights setObject:self.light1 forKey:@"SoundBar-1"];
+    [self.lights setObject:self.light2 forKey:@"SoundBar-2"];
+    [self.lights setObject:self.light3 forKey:@"SoundBar-3"];
+    [self.lights setObject:self.light4 forKey:@"SoundBar-4"];
+    self.light1.alpha = 0.0;
+    self.light2.alpha = 0.0;
+    self.light3.alpha = 0.0;
+    self.light4.alpha = 0.0;
+    
 	[super viewDidLoad];
 }
 
@@ -123,6 +135,11 @@
             star.alpha = 0.0;
         } completion:NULL];
     }];
+}
+
+- (void)setRecordingLevel:(double)level ofSoundBarRecorder:(SoundBarRecorder *)soundBarRecorder {
+    UIImageView *light = [self.lights objectForKey:soundBarRecorder.name];
+    light.alpha = level;
 }
 
 - (void)addGestureRecognizers:(UIView *)aView {
@@ -238,10 +255,10 @@
     } else if (recorder.peak <= 0.3) {
         [self infoDialog:@"TooLow"];
     } else {
+        [self flashStar:recorder.name withDelay:0.0];
         SoundBarPlayer *player = [self.players objectForKey:recorder.name];
         [player setDefaultPlayUrl];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
-        [self flashStar:recorder.name withDelay:0.0];
     }
 }
 
@@ -291,7 +308,7 @@
 }
 
 - (void)infoDialog:(NSString *)messageKey {
-    [self showDialogWithTitle:NSLocalizedString(@"InfoLabel", nil) andMessage:NSLocalizedString(messageKey, nil)];
+    [self showDialogWithTitle:NSLocalizedString(messageKey, nil) andMessage:nil];
 }
 
 @end

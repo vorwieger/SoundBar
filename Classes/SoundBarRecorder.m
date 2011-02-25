@@ -80,6 +80,7 @@ float const MIN_PEAK = 0.3;
 		float decibel = [recorder averagePowerForChannel:0];
 		float level = pow(10, 0.02 * decibel);
 		//DLog(@"recording level: %f", level);
+        [delegate setRecordingLevel:level*2 ofSoundBarRecorder:self];
         if (level > self.peak) {
             self.peak = level;
         }
@@ -88,6 +89,7 @@ float const MIN_PEAK = 0.3;
             DLog(@"recording with offset of %Gs", self.offset);
         }
     } else {
+        [delegate setRecordingLevel:0.0 ofSoundBarRecorder:self];
         [aTimer invalidate];
         DLog(@"finish.");
     }

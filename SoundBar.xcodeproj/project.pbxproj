@@ -86,8 +86,8 @@
 		D09C55D712EB4AE6008008D2 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		D09C55E112EB4B0A008008D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D09E871712E2154D005E095B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D0A2E45A13170CFA00B1D74F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
-		D0A2E45B13170CFA00B1D74F /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		D0A2E45A13170CFA00B1D74F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Resources/Images/star.png; sourceTree = "<group>"; };
+		D0A2E45B13170CFA00B1D74F /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "Resources/Images/star@2x.png"; sourceTree = "<group>"; };
 		D0AF0BB612DF962F0093E29D /* SoundBarRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBarRecorder.h; sourceTree = "<group>"; };
 		D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundBarRecorder.m; sourceTree = "<group>"; };
 		D0B0E5FF130F4B8F00B2748F /* ClipSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipSound.m; sourceTree = "<group>"; };

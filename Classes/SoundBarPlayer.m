@@ -67,7 +67,7 @@
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     [player release];
-    DLog(@"player finish: %@", player);
+    DLog(@"player finish.");
 }
 
 - (void)dealloc {

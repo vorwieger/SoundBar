@@ -37,8 +37,8 @@
 + (SInt64) totalFrames:(ExtAudioFileRef)extAudioFile {
 	SInt64 frameCount;
 	UInt32 dataSize	= sizeof(frameCount);
-	OSStatus result = ExtAudioFileGetProperty(extAudioFile, kExtAudioFileProperty_FileLengthFrames, &dataSize, &frameCount);
-	NSAssert(noErr == result, @"ExtAudioFileGetProperty(kExtAudioFileProperty_FileLengthFrames) failed");
+	OSStatus err = ExtAudioFileGetProperty(extAudioFile, kExtAudioFileProperty_FileLengthFrames, &dataSize, &frameCount);
+    if (err) @throw [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 	return frameCount;
 }
 
@@ -74,14 +74,13 @@
         audioBufferList.mBuffers[0].mData = buffer;
         audioBufferList.mBuffers[0].mDataByteSize = BUFFER_SIZE;
 
-        int nframes = [self totalFrames:inputAudioFileRef];
         int bytesPerFrame = sizeof(int16_t) * 1;
         int framesInBuffer = BUFFER_SIZE / bytesPerFrame;
 
         err = ExtAudioFileSeek(inputAudioFileRef, SAMPLE_RATE * offset);
         if (err) @throw [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
         
-        DLog(@"Clipping audio file of length %0.2fs with offset by %0.2fs", nframes/SAMPLE_RATE, offset);
+        DLog(@"Clipping audio file of length %0.2fs with offset by %0.2fs", [self totalFrames:inputAudioFileRef]/SAMPLE_RATE, offset);
         
         while (TRUE) {
             UInt32 frameCount = framesInBuffer;

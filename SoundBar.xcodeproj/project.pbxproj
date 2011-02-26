@@ -40,8 +40,6 @@
 		D0A236D61210B8420036CAAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D045AA47120F5A40005AB28C /* Localizable.strings */; };
 		D0A2E45C13170CFA00B1D74F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A2E45A13170CFA00B1D74F /* star.png */; };
 		D0A2E45D13170CFA00B1D74F /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A2E45B13170CFA00B1D74F /* star@2x.png */; };
-		D0A936A213185F380031E8BF /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A936A013185F380031E8BF /* light.png */; };
-		D0A936A313185F380031E8BF /* light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A936A113185F380031E8BF /* light@2x.png */; };
 		D0AF0BB812DF962F0093E29D /* SoundBarRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */; };
 		D0B0E600130F4B9000B2748F /* ClipSound.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B0E5FF130F4B8F00B2748F /* ClipSound.m */; };
 		D0B4FE4B12EB7A3A00D55F6B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B4FE4A12EB7A3A00D55F6B /* Default@2x.png */; };
@@ -90,8 +88,6 @@
 		D09E871712E2154D005E095B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D0A2E45A13170CFA00B1D74F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Resources/Images/star.png; sourceTree = "<group>"; };
 		D0A2E45B13170CFA00B1D74F /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "Resources/Images/star@2x.png"; sourceTree = "<group>"; };
-		D0A936A013185F380031E8BF /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light.png; path = Resources/Images/light.png; sourceTree = "<group>"; };
-		D0A936A113185F380031E8BF /* light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "light@2x.png"; path = "Resources/Images/light@2x.png"; sourceTree = "<group>"; };
 		D0AF0BB612DF962F0093E29D /* SoundBarRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBarRecorder.h; sourceTree = "<group>"; };
 		D0AF0BB712DF962F0093E29D /* SoundBarRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundBarRecorder.m; sourceTree = "<group>"; };
 		D0B0E5FF130F4B8F00B2748F /* ClipSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipSound.m; sourceTree = "<group>"; };
@@ -215,8 +211,6 @@
 		D088E351120F4EE500977465 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D0A936A013185F380031E8BF /* light.png */,
-				D0A936A113185F380031E8BF /* light@2x.png */,
 				D0A2E45A13170CFA00B1D74F /* star.png */,
 				D0A2E45B13170CFA00B1D74F /* star@2x.png */,
 				D09C559D12EB4989008008D2 /* background.png */,
@@ -321,8 +315,6 @@
 				D0B4FE4B12EB7A3A00D55F6B /* Default@2x.png in Resources */,
 				D0A2E45C13170CFA00B1D74F /* star.png in Resources */,
 				D0A2E45D13170CFA00B1D74F /* star@2x.png in Resources */,
-				D0A936A213185F380031E8BF /* light.png in Resources */,
-				D0A936A313185F380031E8BF /* light@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

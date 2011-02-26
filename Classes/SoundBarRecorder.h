@@ -14,7 +14,6 @@
 
 @protocol SoundBarRecorderDelegate
 - (void)didFinishRecording:(SoundBarRecorder *)soundBarRecorder;
-- (void)setRecordingLevel:(double)level ofSoundBarRecorder:(SoundBarRecorder *)soundBarRecorder;
 @end
 
 @interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate> {

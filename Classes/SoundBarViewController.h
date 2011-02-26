@@ -28,10 +28,6 @@
 @property (readonly, retain) IBOutlet UIImageView *star2;
 @property (readonly, retain) IBOutlet UIImageView *star3;
 @property (readonly, retain) IBOutlet UIImageView *star4;
-@property (readonly, retain) IBOutlet UIImageView *light1;
-@property (readonly, retain) IBOutlet UIImageView *light2;
-@property (readonly, retain) IBOutlet UIImageView *light3;
-@property (readonly, retain) IBOutlet UIImageView *light4;
 
 - (void)setSoundFromURL:(NSURL *)aURL;
 - (void)sendSoundAsMail;

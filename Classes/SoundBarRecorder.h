@@ -19,9 +19,9 @@
 @interface SoundBarRecorder : NSObject <AVAudioRecorderDelegate> {
 }
 
-@property (assign) id <SoundBarRecorderDelegate> delegate;
-@property (readonly, retain) NSString *name;
-@property (readonly, retain) NSURL *recordUrl;
+@property (weak) id <SoundBarRecorderDelegate> delegate;
+@property (readonly, strong) NSString *name;
+@property (readonly, strong) NSURL *recordUrl;
 @property (readonly) double size;
 @property (readonly) NSTimeInterval offset;
 @property (readonly) float peak;

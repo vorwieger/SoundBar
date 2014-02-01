@@ -9,9 +9,9 @@
 #import "SoundBarRecorder.h"
 
 @interface SoundBarRecorder ()
-@property (readwrite, retain) NSString *name;
-@property (readwrite, retain) NSURL *recordUrl;
-@property (readwrite, retain) AVAudioRecorder *recorder;
+@property (readwrite, strong) NSString *name;
+@property (readwrite, strong) NSURL *recordUrl;
+@property (readwrite, strong) AVAudioRecorder *recorder;
 @property (readwrite) BOOL recording;
 @property (readwrite) double size;
 @property (readwrite) NSTimeInterval offset;
@@ -34,12 +34,12 @@ float const MIN_PEAK = 0.3;
         self.name = theName;
 		NSString *fileName = [NSString stringWithFormat:@"%@.caf", self.name];
 
-        NSMutableDictionary *recordSetting = [[[NSMutableDictionary alloc] init] autorelease];
-        [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatAppleLossless] forKey:AVFormatIDKey];
-        [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-        [recordSetting setValue:[NSNumber numberWithInt:1] forKey:AVNumberOfChannelsKey];
-        [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
-        [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
+        NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+        [recordSetting setValue:@(kAudioFormatAppleLossless) forKey:AVFormatIDKey];
+        [recordSetting setValue:@44100.0f forKey:AVSampleRateKey];
+        [recordSetting setValue:@1 forKey:AVNumberOfChannelsKey];
+        [recordSetting setValue:@16 forKey:AVLinearPCMBitDepthKey];
+        [recordSetting setValue:@(AVAudioQualityMax) forKey:AVEncoderAudioQualityKey];
 
         NSString *recordPath = [NSTemporaryDirectory () stringByAppendingPathComponent:fileName];
         self.recordUrl =  [NSURL fileURLWithPath:recordPath];
@@ -95,15 +95,9 @@ float const MIN_PEAK = 0.3;
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)aRecorder successfully:(BOOL)flag {
     NSFileManager *fm = [NSFileManager defaultManager];
-    self.size = [[[fm attributesOfItemAtPath:self.recordUrl.path error:NULL] objectForKey:NSFileSize] doubleValue];
+    self.size = [[fm attributesOfItemAtPath:self.recordUrl.path error:NULL][NSFileSize] doubleValue];
 	DLog(@"audioRecorderDidFinishRecording size:%g, offset %Gs", self.size, self.offset);
     [self.delegate didFinishRecording:self];
-}
-
-- (void)dealloc {
-    [self.recordUrl release];
-    [self.recorder release];
-    [super dealloc];
 }
 
 @end

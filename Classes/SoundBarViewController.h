@@ -23,11 +23,11 @@
 	IBOutlet UIButton *playButton4;
 }
 
-@property (readonly, retain) IBOutlet UILabel *versionLabel;
-@property (readonly, retain) IBOutlet UIImageView *star1;
-@property (readonly, retain) IBOutlet UIImageView *star2;
-@property (readonly, retain) IBOutlet UIImageView *star3;
-@property (readonly, retain) IBOutlet UIImageView *star4;
+@property (readonly, strong) IBOutlet UILabel *versionLabel;
+@property (readonly, strong) IBOutlet UIImageView *star1;
+@property (readonly, strong) IBOutlet UIImageView *star2;
+@property (readonly, strong) IBOutlet UIImageView *star3;
+@property (readonly, strong) IBOutlet UIImageView *star4;
 
 - (void)setSoundFromURL:(NSURL *)aURL;
 - (IBAction)sendSoundAsMail;

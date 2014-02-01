@@ -48,7 +48,7 @@
     UInt8 *buffer = malloc(BUFFER_SIZE);
     OSStatus err = noErr;
     @try {
-        err = ExtAudioFileOpenURL((CFURLRef)infile, &inputAudioFileRef);
+        err = ExtAudioFileOpenURL((__bridge CFURLRef)infile, &inputAudioFileRef);
         if (err) @throw [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
         AudioStreamBasicDescription	inputFileFormat;
         [self setDefaultAudioFormatFlags:&inputFileFormat numChannels:1];
@@ -64,7 +64,7 @@
             typeId = kAudioFileWAVEType;
             flags += kAudioFileFlags_DontPageAlignAudioData;
         }
-        err = ExtAudioFileCreateWithURL((CFURLRef)outfile, typeId, &outputFileFormat, NULL, flags, &outputAudioFileRef);
+        err = ExtAudioFileCreateWithURL((__bridge CFURLRef)outfile, typeId, &outputFileFormat, NULL, flags, &outputAudioFileRef);
         if (err) @throw [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 
         // Buffer to read from source file and write to dest file

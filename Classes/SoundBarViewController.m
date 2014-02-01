@@ -10,15 +10,15 @@
 #import "ClipSound.h"
 
 @interface SoundBarViewController ()
-@property (readwrite, retain) UILabel *versionLabel;
-@property (readwrite, retain) NSMutableDictionary *players;
-@property (readwrite, retain) NSMutableDictionary *recorders;
-@property (readwrite, retain) NSMutableDictionary *stars;
-@property (readwrite, retain) UIActionSheet *importSelector;
-@property (readwrite, retain) UIActionSheet *exportSelector;
-@property (readwrite, retain) NSURL *importURL;
-@property (readwrite, retain) SoundBarPlayer *selectedPlayer;
-@property (readwrite, retain) UIDocumentInteractionController *documentInteractionController;
+@property (readwrite, strong) UILabel *versionLabel;
+@property (readwrite, strong) NSMutableDictionary *players;
+@property (readwrite, strong) NSMutableDictionary *recorders;
+@property (readwrite, strong) NSMutableDictionary *stars;
+@property (readwrite, strong) UIActionSheet *importSelector;
+@property (readwrite, strong) UIActionSheet *exportSelector;
+@property (readwrite, strong) NSURL *importURL;
+@property (readwrite, strong) SoundBarPlayer *selectedPlayer;
+@property (readwrite, strong) UIDocumentInteractionController *documentInteractionController;
 - (void)addGestureRecognizers:(UIView *)aView;
 @end
 
@@ -37,7 +37,7 @@
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/Info.plist", bundlePath]];
 
-    self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version", nil), [infoDictionary objectForKey:@"CFBundleVersion"]];
+    self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version", nil), infoDictionary[@"CFBundleVersion"]];
 	//self.versionLabel.text = @"loading...";
 
     // prepare AudioSession
@@ -53,11 +53,11 @@
     self.players = [NSMutableDictionary dictionaryWithCapacity:4];
     for (int i = 1; i <= 4; i++) {
         NSString *name = [NSString stringWithFormat:@"SoundBar-%d", i];
-        SoundBarRecorder *recorder = [[[SoundBarRecorder alloc] initWithName:name] autorelease];
-        SoundBarPlayer *player = [[[SoundBarPlayer alloc] initWithName:name] autorelease];
+        SoundBarRecorder *recorder = [[SoundBarRecorder alloc] initWithName:name];
+        SoundBarPlayer *player = [[SoundBarPlayer alloc] initWithName:name];
         recorder.delegate = self;
-        [self.recorders setObject:recorder forKey:name];
-        [self.players setObject:player forKey:name];
+        (self.recorders)[name] = recorder;
+        (self.players)[name] = player;
         
         // preserve compatibility for version prior 1.1
         NSFileManager *fm = [NSFileManager defaultManager];
@@ -83,26 +83,26 @@
 	[self addGestureRecognizers:playButton4];
 
 	// initialize Import/Export ActionSheets
-	self.importSelector = [[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ImportTitle", nil)
+	self.importSelector = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ImportTitle", nil)
 													  delegate:self 
 											 cancelButtonTitle:NSLocalizedString(@"CancelButton", nil)
 										destructiveButtonTitle:nil
-											 otherButtonTitles:NSLocalizedString(@"ImportSound1Button", nil),NSLocalizedString(@"ImportSound2Button", nil),NSLocalizedString(@"ImportSound3Button", nil), NSLocalizedString(@"ImportSound4Button", nil), nil] autorelease];
+											 otherButtonTitles:NSLocalizedString(@"ImportSound1Button", nil),NSLocalizedString(@"ImportSound2Button", nil),NSLocalizedString(@"ImportSound3Button", nil), NSLocalizedString(@"ImportSound4Button", nil), nil];
 	
-	self.exportSelector = [[[UIActionSheet alloc] initWithTitle:nil
+	self.exportSelector = [[UIActionSheet alloc] initWithTitle:nil
 													  delegate:self 
 											 cancelButtonTitle:NSLocalizedString(@"CancelButton", nil)
 										destructiveButtonTitle:nil
-											 otherButtonTitles:NSLocalizedString(@"SendByMailButton", nil), NSLocalizedString(@"ExportButton", nil), nil] autorelease];
+											 otherButtonTitles:NSLocalizedString(@"SendByMailButton", nil), NSLocalizedString(@"ExportButton", nil), nil];
 	
-	self.documentInteractionController = [[[UIDocumentInteractionController alloc] init] autorelease];
+	self.documentInteractionController = [[UIDocumentInteractionController alloc] init];
 	self.documentInteractionController.delegate = self;
     
     self.stars = [NSMutableDictionary dictionaryWithCapacity:4];
-    [self.stars setObject:self.star1 forKey:@"SoundBar-1"];
-    [self.stars setObject:self.star2 forKey:@"SoundBar-2"];
-    [self.stars setObject:self.star3 forKey:@"SoundBar-3"];
-    [self.stars setObject:self.star4 forKey:@"SoundBar-4"];
+    (self.stars)[@"SoundBar-1"] = self.star1;
+    (self.stars)[@"SoundBar-2"] = self.star2;
+    (self.stars)[@"SoundBar-3"] = self.star3;
+    (self.stars)[@"SoundBar-4"] = self.star4;
     self.star1.alpha = 0.0;
     self.star2.alpha = 0.0;
     self.star3.alpha = 0.0;
@@ -112,7 +112,7 @@
 }
 
 - (void)flashStar:(NSString *)name withDelay:(NSTimeInterval)delay {
-    UIImageView *star = [self.stars objectForKey:name];
+    UIImageView *star = (self.stars)[name];
     [UIView animateWithDuration:0.05 delay:delay options:UIViewAnimationOptionAllowUserInteraction animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         star.transform = transform;
@@ -130,7 +130,6 @@
 	UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
 	longPressGestureRecognizer.minimumPressDuration = 1.0; 
 	[aView addGestureRecognizer:longPressGestureRecognizer];
-    [longPressGestureRecognizer release];
 }
 
 - (void)handleLongPressGesture:(UIGestureRecognizer *)recognizer {
@@ -138,7 +137,7 @@
 		id button = recognizer.view;
 		NSString *name = [[button titleLabel] text];
 		DLog(@"handleLongPressGesture detected: %@", name);
-		self.selectedPlayer = [self.players objectForKey:name];
+		self.selectedPlayer = (self.players)[name];
 		if (self.selectedPlayer.size == 0) {
 			[self infoDialog:@"NoSound"];
 		} else {
@@ -151,7 +150,7 @@
 	if (actionSheet == self.importSelector) {
 		DLog(@"importSelector: %d", buttonIndex);
 		NSString *name = [NSString stringWithFormat:@"SoundBar-%d", buttonIndex+1];
-		SoundBarPlayer *player = [self.players objectForKey:name];
+		SoundBarPlayer *player = (self.players)[name];
         if (player) {
             DLog(@"setting %@ to importURL: %@", player.name, importURL);
             NSFileManager *fm = [NSFileManager defaultManager];
@@ -186,8 +185,7 @@
 		mailController.mailComposeDelegate = self;
 		[mailController setSubject:NSLocalizedString(@"MailSubject", nil)];
 		[mailController addAttachmentData:data mimeType:@"" fileName:fileName];
-		[self presentModalViewController:mailController animated:YES];
-		[mailController release];
+		[self presentViewController:mailController animated:YES completion:^{}];
 	} else {
 		[self errorDialog:@"NoMail"];
 	}
@@ -200,7 +198,7 @@
 		[self showDialogWithTitle:NSLocalizedString(@"ErrorSendingMail", nil) 
 					   andMessage:[error localizedFailureReason]];
 	}
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)setSoundFromURL:(NSURL *)aURL {
@@ -210,7 +208,7 @@
 
 - (IBAction)play:(id)sender {
     NSString *name = [[sender titleLabel] text];
-    SoundBarPlayer *player = [self.players objectForKey:name];
+    SoundBarPlayer *player = (self.players)[name];
     if (player.size == 0) {
        [self infoDialog:@"NoSound"];
     } else {
@@ -220,13 +218,13 @@
 
 - (IBAction)startRecording:(id)sender {
     NSString *name = [[sender titleLabel] text];
-    SoundBarRecorder *recorder = [self.recorders objectForKey:name];
+    SoundBarRecorder *recorder = (self.recorders)[name];
     [recorder startRecording];
 }
 
 - (IBAction)stopRecording:(id)sender {
     NSString *name = [[sender titleLabel] text];
-    SoundBarRecorder *recorder = [self.recorders objectForKey:name];
+    SoundBarRecorder *recorder = (self.recorders)[name];
     [recorder stopRecording];
 }
 
@@ -240,7 +238,7 @@
         [self infoDialog:@"TooLow"];
     } else {
         [self flashStar:recorder.name withDelay:0.0];
-        SoundBarPlayer *player = [self.players objectForKey:recorder.name];
+        SoundBarPlayer *player = (self.players)[recorder.name];
         [player setDefaultPlayUrl];
         [ClipSound clip:recorder.recordUrl outfile:player.playUrl offset:recorder.offset];
     }
@@ -262,15 +260,6 @@
 	self.versionLabel = nil;
 }
 
-- (void)dealloc {
-    [versionLabel release];
-    [recorders release];
-    [players release];
-	[importSelector release];
-	[exportSelector release];
-	[documentInteractionController release];
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Error/Info-Dialog
@@ -282,7 +271,6 @@
                                           cancelButtonTitle:NSLocalizedString(@"OKButton", nil)
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
     return;
 }
 

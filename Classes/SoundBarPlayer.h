@@ -13,8 +13,8 @@
 @interface SoundBarPlayer : NSObject <AVAudioPlayerDelegate> {
 }
 
-@property (readonly, retain, nonatomic) NSString *name;
-@property (readwrite, retain, nonatomic) NSURL *playUrl;
+@property (readonly, strong, nonatomic) NSString *name;
+@property (readwrite, strong, nonatomic) NSURL *playUrl;
 @property (readonly, nonatomic) double size;
 
 - (id)initWithName:(NSString *)theName;

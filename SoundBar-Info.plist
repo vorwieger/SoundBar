@@ -54,9 +54,5 @@
 	<array>
 		<string>microphone</string>
 	</array>
-	<key>UIStatusBarHidden</key>
-	<true/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
 </dict>
 </plist>

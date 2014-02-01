@@ -31,6 +31,9 @@
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
 
+    [application setStatusBarHidden:NO];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

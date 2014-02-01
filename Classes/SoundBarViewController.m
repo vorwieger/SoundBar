@@ -24,22 +24,25 @@
 
 @implementation SoundBarViewController
 
-@synthesize versionLabel;
 @synthesize star1, star2, star3, star4, stars;
 @synthesize players;
 @synthesize recorders;
 @synthesize importSelector, exportSelector;
 @synthesize importURL, selectedPlayer, documentInteractionController;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)loadView {
+    [super viewDidLoad];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480) {
+            [[NSBundle mainBundle] loadNibNamed:@"SoundBarViewController" owner:self options:nil];
+        } else {
+            [[NSBundle mainBundle] loadNibNamed:@"SoundBarViewController-568h" owner:self options:nil];
+        }
+    }
+}
+
 - (void)viewDidLoad {
-    // update the version label with version number from Info.plist
-    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-    NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/Info.plist", bundlePath]];
-
-    self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version", nil), infoDictionary[@"CFBundleVersion"]];
-	//self.versionLabel.text = @"loading...";
-
     // prepare AudioSession
     // [[AVAudioSession sharedInstance] setDelegate: self];
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
@@ -252,14 +255,6 @@
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewDidUnload {
-	[super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-	self.versionLabel = nil;
-}
-
 
 #pragma mark -
 #pragma mark Error/Info-Dialog

@@ -30,7 +30,7 @@
 @property (readonly, retain) IBOutlet UIImageView *star4;
 
 - (void)setSoundFromURL:(NSURL *)aURL;
-- (void)sendSoundAsMail;
+- (IBAction)sendSoundAsMail;
 
 - (IBAction)play:(id)sender;
 - (IBAction)startRecording:(id)sender;

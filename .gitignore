@@ -1,3 +1,4 @@
 .DS_Store
-build/
-SoundBar.xcodeproj/xcuserdata/peter.xcuserdatad/xcbreakpoints/Breakpoints.xcbkptlist
+build/*
+*pbxuser
+xcuserdata

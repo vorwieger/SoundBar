@@ -12,7 +12,9 @@
                 <outlet property="playButton3" destination="29" id="70"/>
                 <outlet property="playButton4" destination="31" id="71"/>
                 <outlet property="playTip" destination="vOw-Rg-ghw" id="1co-eE-BAn"/>
+                <outlet property="playTipLabel" destination="lz4-Qo-4y9" id="Z99-Mq-h8R"/>
                 <outlet property="recTip" destination="Fwk-17-h5E" id="XD8-DI-BVB"/>
+                <outlet property="recTipLabel" destination="yVY-KC-WEe" id="D4l-Tc-xa7"/>
                 <outlet property="star1" destination="78" id="79"/>
                 <outlet property="star2" destination="80" id="83"/>
                 <outlet property="star3" destination="81" id="84"/>
@@ -174,11 +176,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qkE-VO-JTh">
-                    <rect key="frame" x="145" y="525" width="30" height="30"/>
+                    <rect key="frame" x="109" y="525" width="103" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <state key="normal" title="?">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                    <state key="normal" title="     ?     ">
+                        <color key="titleColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -193,7 +195,7 @@
                             <rect key="frame" x="72" y="31" width="230" height="138"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zum Aufnehme Knopf gedrückt halten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yVY-KC-WEe">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yVY-KC-WEe">
                             <rect key="frame" x="84" y="50" width="207" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -210,7 +212,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="254" height="169"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drücken zum Abspielen. Lange Drücken zum Exportieren." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lz4-Qo-4y9">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lz4-Qo-4y9">
                             <rect key="frame" x="26" y="39" width="207" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>

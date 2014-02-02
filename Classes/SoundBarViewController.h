@@ -31,6 +31,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *recTip;
 @property (weak, nonatomic) IBOutlet UIView *playTip;
+@property (weak, nonatomic) IBOutlet UILabel *recTipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playTipLabel;
 - (IBAction)helpButton:(id)sender;
 
 - (void)setSoundFromURL:(NSURL *)aURL;

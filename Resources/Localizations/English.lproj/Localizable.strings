@@ -17,9 +17,10 @@
 "ErrorLabel" = "Error!";
 "InfoLabel" = "Info";
 
-"NoSound" = "No Sound recorded.\nTo record a sound press and hold the red button.";
-"NoRecording" =  "To record a sound press and hold the red button.";
 "TooLow" =  "The recording was too quiet.";
 "NoMail" = "Email is not available! Please configure Your Mail Account.";
 "ErrorSendingMail" = "Error sending Mail!";
 "NoRegistratedApp" = "No installed apps support opening this file.";
+
+"RecTip" = "To record a sound\npress and hold the red button.";
+"PlayTip" = "Press the green button to play.\nHold to export.";

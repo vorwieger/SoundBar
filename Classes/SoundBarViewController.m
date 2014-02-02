@@ -6,6 +6,7 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
 #import "SoundBarViewController.h"
 #import "ClipSound.h"
 
@@ -140,11 +141,13 @@
         aView.transform = transform;
         aView.alpha = 1.0;
     } completion:^(BOOL finished) {
+        [self playPlop];
+        
         [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
             aView.transform = transform;
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:1.0 delay:5.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            [UIView animateWithDuration:0.5 delay:3.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
                 CGAffineTransform transform = CGAffineTransformMakeScale(0.1f, 0.1f);
                 aView.transform = transform;
                 aView.alpha = 0.0;
@@ -153,9 +156,26 @@
     }];
 }
 
-- (IBAction)helpButton:(id)sender {
+- (void)playPlop {
+    NSURL *audioPath = [[NSBundle mainBundle] URLForResource:@"plop" withExtension:@"aif"];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioPath, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+}
+
+- (void)showRecTip {
+    self.recTipLabel.text = NSLocalizedString(@"RecTip", nil);
     [self flashView:self.recTip withDelay:0.0];
+}
+
+- (void)showPlayTip {
+    self.playTipLabel.text = NSLocalizedString(@"PlayTip", nil);
     [self flashView:self.playTip withDelay:1.0];
+}
+
+- (IBAction)helpButton:(id)sender {
+    [self showRecTip];
+    [self showPlayTip];
 }
 
 - (void)addGestureRecognizers:(UIView *)aView {
@@ -171,7 +191,7 @@
 		DLog(@"handleLongPressGesture detected: %@", name);
 		self.selectedPlayer = (self.players)[name];
 		if (self.selectedPlayer.size == 0) {
-			[self infoDialog:@"NoSound"];
+            [self showRecTip];
 		} else {
 			[self.exportSelector showInView:self.view];
 		}
@@ -242,7 +262,8 @@
     NSString *name = [[sender titleLabel] text];
     SoundBarPlayer *player = (self.players)[name];
     if (player.size == 0) {
-       [self infoDialog:@"NoSound"];
+        [self showRecTip];
+        [self showPlayTip];
     } else {
         [player playSound];
     }
@@ -265,7 +286,8 @@
 
 - (void)didFinishRecording:(SoundBarRecorder *)recorder {
     if (recorder.size < 20000) {
-        [self infoDialog:@"NoRecording"];
+        [self showRecTip];
+        [self showPlayTip];
     } else if (recorder.peak <= 0.3) {
         [self infoDialog:@"TooLow"];
     } else {

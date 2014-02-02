@@ -11,6 +11,10 @@
                 <outlet property="playButton2" destination="27" id="69"/>
                 <outlet property="playButton3" destination="29" id="70"/>
                 <outlet property="playButton4" destination="31" id="71"/>
+                <outlet property="playTip" destination="JQX-82-bNm" id="ZzQ-t0-If8"/>
+                <outlet property="playTipLabel" destination="y6l-aA-Xtp" id="YEk-bz-xKA"/>
+                <outlet property="recTip" destination="ydM-xE-qt0" id="o4P-Yn-boP"/>
+                <outlet property="recTipLabel" destination="0k4-CI-aRl" id="u7g-4i-7eX"/>
                 <outlet property="star1" destination="78" id="79"/>
                 <outlet property="star2" destination="80" id="83"/>
                 <outlet property="star3" destination="81" id="84"/>
@@ -171,12 +175,60 @@
                     <rect key="frame" x="238" y="351" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uck-SS-2be">
+                    <rect key="frame" x="128" y="435" width="65" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                    <state key="normal" title="   ?   ">
+                        <color key="titleColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="helpButton:" destination="-1" eventType="touchUpInside" id="B7Y-TO-7Xa"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" id="ydM-xE-qt0">
+                    <rect key="frame" x="0.0" y="3" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wolke2.png" id="9TU-2X-uGc">
+                            <rect key="frame" x="72" y="31" width="230" height="138"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0k4-CI-aRl">
+                            <rect key="frame" x="84" y="50" width="207" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="JQX-82-bNm">
+                    <rect key="frame" x="0.0" y="225" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wolke1.png" id="KsO-94-kIJ">
+                            <rect key="frame" x="0.0" y="0.0" width="254" height="169"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y6l-aA-Xtp">
+                            <rect key="frame" x="26" y="39" width="207" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
+        <image name="Wolke1.png" width="640" height="460"/>
+        <image name="Wolke2.png" width="640" height="460"/>
         <image name="background.png" width="320" height="480"/>
         <image name="play.png" width="114" height="114"/>
         <image name="play_pressed.png" width="114" height="114"/>

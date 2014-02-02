@@ -23,7 +23,6 @@
 	IBOutlet UIButton *playButton4;
 }
 
-@property (readonly, strong) IBOutlet UILabel *versionLabel;
 @property (readonly, strong) IBOutlet UIImageView *star1;
 @property (readonly, strong) IBOutlet UIImageView *star2;
 @property (readonly, strong) IBOutlet UIImageView *star3;

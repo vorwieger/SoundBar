@@ -12,6 +12,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* SoundBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* SoundBarViewController.m */; };
+		D0146346189ECB06006C2525 /* Wolke1.png in Resources */ = {isa = PBXBuildFile; fileRef = D0146344189ECB06006C2525 /* Wolke1.png */; };
+		D0146347189ECB06006C2525 /* Wolke2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0146345189ECB06006C2525 /* Wolke2.png */; };
 		D01E2771120CE05D0080B12C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01E2770120CE05D0080B12C /* AudioToolbox.framework */; };
 		D0417071130B1D4B00852A76 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0417070130B1D4B00852A76 /* CoreMedia.framework */; };
 		D0640C7F189DA37200F7685C /* SoundBarViewController-568h.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0640C7E189DA37200F7685C /* SoundBarViewController-568h.xib */; };
@@ -64,6 +66,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SoundBar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBar_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SoundBar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SoundBar-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D0146344189ECB06006C2525 /* Wolke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wolke1.png; sourceTree = "<group>"; };
+		D0146345189ECB06006C2525 /* Wolke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wolke2.png; sourceTree = "<group>"; };
 		D01E2770120CE05D0080B12C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D0417070130B1D4B00852A76 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D045AA48120F5A40005AB28C /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/Localizations/English.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		D088E351120F4EE500977465 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0146344189ECB06006C2525 /* Wolke1.png */,
+				D0146345189ECB06006C2525 /* Wolke2.png */,
 				D0A2E45A13170CFA00B1D74F /* star.png */,
 				D0A2E45B13170CFA00B1D74F /* star@2x.png */,
 				D09C559D12EB4989008008D2 /* background.png */,
@@ -326,6 +332,8 @@
 				D09C55B012EB4989008008D2 /* background@2x.png in Resources */,
 				D09C55B912EB4989008008D2 /* play_pressed.png in Resources */,
 				D09C55BA12EB4989008008D2 /* play_pressed@2x.png in Resources */,
+				D0146347189ECB06006C2525 /* Wolke2.png in Resources */,
+				D0146346189ECB06006C2525 /* Wolke1.png in Resources */,
 				D09C55BB12EB4989008008D2 /* play.png in Resources */,
 				D09C55BC12EB4989008008D2 /* play@2x.png in Resources */,
 				D08CA5EF189DAF1C0020C1CA /* Images.xcassets in Resources */,

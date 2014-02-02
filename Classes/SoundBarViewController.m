@@ -110,6 +110,11 @@
     self.star2.alpha = 0.0;
     self.star3.alpha = 0.0;
 	self.star4.alpha = 0.0;
+    
+    self.recTip.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+    self.playTip.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+    self.recTip.alpha = 0.0;
+    self.playTip.alpha = 0.0;
 
 	[super viewDidLoad];
 }
@@ -127,6 +132,30 @@
             star.alpha = 0.0;
         } completion:NULL];
     }];
+}
+
+- (void)flashView:(UIView *)aView withDelay:(NSTimeInterval)delay {
+    [UIView animateWithDuration:0.2 delay:delay options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+        aView.transform = transform;
+        aView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            aView.transform = transform;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.0 delay:5.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                CGAffineTransform transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+                aView.transform = transform;
+                aView.alpha = 0.0;
+            } completion:NULL];
+        }];
+    }];
+}
+
+- (IBAction)helpButton:(id)sender {
+    [self flashView:self.recTip withDelay:0.0];
+    [self flashView:self.playTip withDelay:1.0];
 }
 
 - (void)addGestureRecognizers:(UIView *)aView {

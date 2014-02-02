@@ -11,6 +11,8 @@
                 <outlet property="playButton2" destination="27" id="69"/>
                 <outlet property="playButton3" destination="29" id="70"/>
                 <outlet property="playButton4" destination="31" id="71"/>
+                <outlet property="playTip" destination="vOw-Rg-ghw" id="1co-eE-BAn"/>
+                <outlet property="recTip" destination="Fwk-17-h5E" id="XD8-DI-BVB"/>
                 <outlet property="star1" destination="78" id="79"/>
                 <outlet property="star2" destination="80" id="83"/>
                 <outlet property="star3" destination="81" id="84"/>
@@ -28,7 +30,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9" userLabel="rec1">
-                    <rect key="frame" x="25" y="52" width="114" height="114"/>
+                    <rect key="frame" x="25" y="37" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-1" image="rec.png">
@@ -45,7 +47,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="15" userLabel="rec2">
-                    <rect key="frame" x="25" y="167" width="114" height="114"/>
+                    <rect key="frame" x="25" y="162" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-2" image="rec.png">
@@ -62,7 +64,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="19" userLabel="rec3">
-                    <rect key="frame" x="25" y="283" width="114" height="114"/>
+                    <rect key="frame" x="25" y="288" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-3" image="rec.png">
@@ -79,7 +81,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="23" userLabel="rec4">
-                    <rect key="frame" x="25" y="398" width="114" height="114"/>
+                    <rect key="frame" x="25" y="413" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-4" image="rec.png">
@@ -96,7 +98,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="10" userLabel="play1">
-                    <rect key="frame" x="182" y="52" width="114" height="114"/>
+                    <rect key="frame" x="182" y="37" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-1" image="play.png">
@@ -111,7 +113,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="27" userLabel="play2">
-                    <rect key="frame" x="182" y="167" width="114" height="114"/>
+                    <rect key="frame" x="182" y="162" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-2" image="play.png">
@@ -126,7 +128,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="29" userLabel="play3">
-                    <rect key="frame" x="182" y="283" width="114" height="114"/>
+                    <rect key="frame" x="182" y="288" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-3" image="play.png">
@@ -141,7 +143,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="31" userLabel="play4">
-                    <rect key="frame" x="182" y="398" width="114" height="114"/>
+                    <rect key="frame" x="182" y="413" width="114" height="114"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="SoundBar-4" image="play.png">
@@ -156,27 +158,75 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="star.png" id="78" userLabel="star1">
-                    <rect key="frame" x="238" y="49" width="48" height="48"/>
+                    <rect key="frame" x="238" y="34" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="star.png" id="80" userLabel="star2">
-                    <rect key="frame" x="238" y="164" width="48" height="48"/>
+                    <rect key="frame" x="238" y="159" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="star.png" id="81" userLabel="star3">
-                    <rect key="frame" x="238" y="279" width="48" height="48"/>
+                    <rect key="frame" x="238" y="284" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="star.png" id="82" userLabel="star4">
-                    <rect key="frame" x="238" y="395" width="48" height="48"/>
+                    <rect key="frame" x="238" y="410" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qkE-VO-JTh">
+                    <rect key="frame" x="145" y="525" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <state key="normal" title="?">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="helpButton:" destination="-1" eventType="touchUpInside" id="rQN-zQ-ViP"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" id="Fwk-17-h5E">
+                    <rect key="frame" x="0.0" y="37" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wolke2.png" id="11p-Xl-2Tr">
+                            <rect key="frame" x="72" y="31" width="230" height="138"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zum Aufnehme Knopf gedrückt halten" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yVY-KC-WEe">
+                            <rect key="frame" x="84" y="50" width="207" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="vOw-Rg-ghw">
+                    <rect key="frame" x="0.0" y="288" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wolke1.png" id="QFj-yX-gPn">
+                            <rect key="frame" x="0.0" y="0.0" width="254" height="169"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drücken zum Abspielen. Lange Drücken zum Exportieren." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lz4-Qo-4y9">
+                            <rect key="frame" x="26" y="39" width="207" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
+        <image name="Wolke1.png" width="640" height="460"/>
+        <image name="Wolke2.png" width="640" height="460"/>
         <image name="background.png" width="320" height="480"/>
         <image name="play.png" width="114" height="114"/>
         <image name="play_pressed.png" width="114" height="114"/>

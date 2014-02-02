@@ -29,6 +29,10 @@
 @property (readonly, strong) IBOutlet UIImageView *star3;
 @property (readonly, strong) IBOutlet UIImageView *star4;
 
+@property (weak, nonatomic) IBOutlet UIView *recTip;
+@property (weak, nonatomic) IBOutlet UIView *playTip;
+- (IBAction)helpButton:(id)sender;
+
 - (void)setSoundFromURL:(NSURL *)aURL;
 - (IBAction)sendSoundAsMail;
 
